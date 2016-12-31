@@ -40,5 +40,12 @@ public class BaseDAO {
 		
 		return conn;
 	}
+	
+	public static void main(String[] args) {
+		BaseDAO dao = new BaseDAO();
+		Connection conn = dao.getConn();
+		
+		
+	}
 
 }
