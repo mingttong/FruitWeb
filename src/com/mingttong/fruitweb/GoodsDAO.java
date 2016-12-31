@@ -3,6 +3,7 @@ package com.mingttong.fruitweb;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class GoodsDAO extends BaseDAO {
 	
@@ -106,11 +107,28 @@ public class GoodsDAO extends BaseDAO {
 	}
 	
 	public static void main(String[] args) {
+		String titleInDb = "";
+		
 		GoodsDAO dao = new GoodsDAO();
 		Connection conn = dao.getConn();
 		String sql = "select title from goods where id=1003";
 		
-		PreparedStatement ps = conn.prepareStatement(sql);
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				titleInDb = rs.getString("title");
+			} else {
+				titleInDb = "√ª’“µΩ£°";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dao.close(conn);
+		}
+		
+		System.out.println(titleInDb);
 		
 	}
 
