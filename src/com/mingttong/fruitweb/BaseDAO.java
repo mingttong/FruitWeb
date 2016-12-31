@@ -1,6 +1,7 @@
 package com.mingttong.fruitweb;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class BaseDAO {
 	
@@ -20,6 +21,10 @@ public class BaseDAO {
 		}
 	}
 	
+	/**
+	 * 获取数据库连接
+	 * @return 返回数据库连接
+	 */
 	public Connection getConn() {
 		Connection conn = null;
 		
@@ -27,6 +32,8 @@ public class BaseDAO {
 			// 1. 加载驱动
 			Class.forName("com.mysql.jdbc.Driver");
 			// 2. 获取指定数据库的连接对象
+			String url = "jdbc:mysql://127.0.0.1:3306/fruit";
+			conn = DriverManager.getConnection(url, "root", "");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

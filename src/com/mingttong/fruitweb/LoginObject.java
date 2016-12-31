@@ -24,7 +24,7 @@ public class LoginObject {
 		// 用户存在
 		if (vo != null) {
 			// 匹配密码是否正确
-			f = vo.getPwd().equals(password) ? true : false;
+			f = vo.getPassword().equals(password) ? true : false;
 			
 		// 用户不存在
 		} else {
