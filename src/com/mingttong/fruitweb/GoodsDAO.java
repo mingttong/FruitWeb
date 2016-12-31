@@ -111,7 +111,7 @@ public class GoodsDAO extends BaseDAO {
 		
 		GoodsDAO dao = new GoodsDAO();
 		Connection conn = dao.getConn();
-		String sql = "select title from goods where id=1003";
+		String sql = "select title from goods where goods_id=1005";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
