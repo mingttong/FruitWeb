@@ -4,19 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>请注册</title>
 </head>
 <body>
 <h1>注册</h1>
 <hr />
-
-<form action="login.do" method="post">
-    用户名：<input type="text" name="usr" />
-    <br />
-    密码：<input type="password" name="pwd" />
-    <br />
-    <input type="submit" value="登录" />
-</form>
 
 </body>
 </html>

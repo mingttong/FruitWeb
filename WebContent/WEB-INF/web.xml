@@ -19,4 +19,14 @@
     <servlet-name>ServletLogin</servlet-name>
     <url-pattern>/login.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletReg</display-name>
+    <servlet-name>ServletReg</servlet-name>
+    <servlet-class>com.mingttong.fruitweb.ServletReg</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletReg</servlet-name>
+    <url-pattern>/reg.do</url-pattern>
+  </servlet-mapping>
 </web-app>
