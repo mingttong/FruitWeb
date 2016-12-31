@@ -18,8 +18,6 @@
     <br/>
     图片地址：<input type="text" name="img_url"/>
     <br/>
-    产地是哪：<input type="text" name="made_in"/>
-    <br/>
     <input type="submit" value="添加"/>
 </form>
 

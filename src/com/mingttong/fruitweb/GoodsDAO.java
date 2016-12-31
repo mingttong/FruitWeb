@@ -5,10 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class GoodsDAO extends BaseDAO {
-
-	public static void main(String[] args) {
-
-	}
 	
 	/**
 	 * 根据title查找商品信息
@@ -23,22 +19,23 @@ public class GoodsDAO extends BaseDAO {
 		String imgUrlInDb = "";
 		
 		Connection conn = getConn();
-		String sql = "select usr_name, pwd from usr_info where usr_name = ?";
+		String sql = "select title, price, img_url where title=?";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, user_name);
+			ps.setString(1, title);
 			
 			ResultSet rs = ps.executeQuery();
 			
 			if (rs.next()) {
 				
-				usrInDb = rs.getString("usr_name");
-				pwdInDb = rs.getString("pwd");
-				vo = new GoodsVO(usrInDb, pwdInDb);
+				titleInDb = rs.getString("title");
+				priceInDb = rs.getInt("price");
+				imgUrlInDb = rs.getString("img_url");
+				vo = new GoodsVO(titleInDb, priceInDb, imgUrlInDb);
 				
 			} else {
-				System.out.println("用户名不存在！");
+				System.out.println("商品不存在！");
 			}
 			
 		} catch (Exception e) {
@@ -76,18 +73,18 @@ public class GoodsDAO extends BaseDAO {
 		String title = vo.getTitle();
 		int price = vo.getPrice();
 		String imgUrl = vo.getImgUrl();
-		String madeIn = vo.getMadeIn();
+//		String madeIn = vo.getMadeIn();
 		
 		if (! checkExist(title)) {
 			Connection conn = getConn();
-			String sql = "insert into goods (title, price, img_url, made_in) values (?, ?, ?, ?)";
+			String sql = "insert into goods (title, price, img_url) values (?, ?, ?)";
 
 			try {
 				PreparedStatement ps = conn.prepareStatement(sql);
 				ps.setString(1, title);
 				ps.setInt(2, price);
 				ps.setString(3, imgUrl);
-				ps.setString(4, madeIn);
+//				ps.setString(4, madeIn);
 
 				int count = ps.executeUpdate(); // 执行sql
 
@@ -106,6 +103,15 @@ public class GoodsDAO extends BaseDAO {
 		}
 		
 		return f;
+	}
+	
+	public static void main(String[] args) {
+		GoodsDAO dao = new GoodsDAO();
+		Connection conn = dao.getConn();
+		String sql = "select title from goods where id=1003";
+		
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
 	}
 
 }

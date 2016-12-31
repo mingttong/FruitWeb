@@ -5,7 +5,7 @@ public class GoodsVO {
 	private String title = "";
 	private int price = 0;
 	private String imgUrl = ""; // 商品图片地址
-	private String madeIn = ""; // 商品产地
+//	private String madeIn = ""; // 商品产地
 	
 	/*
 	 * getter/setter
@@ -29,22 +29,22 @@ public class GoodsVO {
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
-	public String getMadeIn() {
-		return madeIn;
-	}
-	public void setMadeIn(String madeIn) {
-		this.madeIn = madeIn;
-	}
+//	public String getMadeIn() {
+//		return madeIn;
+//	}
+//	public void setMadeIn(String madeIn) {
+//		this.madeIn = madeIn;
+//	}
 	/*
 	 * **************end***************
 	 */
 	
-	public GoodsVO(String title, int price, String imgUrl, String madeIn) {
+	public GoodsVO(String title, int price, String imgUrl) {
 		super();
 		this.title = title;
 		this.price = price;
 		this.imgUrl = imgUrl;
-		this.madeIn = madeIn;
+//		this.madeIn = madeIn;
 	}
 	
 	

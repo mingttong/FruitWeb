@@ -23,9 +23,9 @@ public class ServletAddGoodsInDb extends HttpServlet {
 		String title = request.getParameter("title");
 		int price = Integer.parseInt(request.getParameter("price"));
 		String img_url = request.getParameter("img_url");
-		String made_in = request.getParameter("made_in");
+//		String made_in = request.getParameter("made_in");
 		
-		GoodsVO vo = new GoodsVO(title, price, img_url, made_in);
+		GoodsVO vo = new GoodsVO(title, price, img_url);
 		GoodsDAO dao = new GoodsDAO();
 		
 		boolean f = dao.add(vo);
