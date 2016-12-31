@@ -19,7 +19,7 @@ public class ServletAddGoodsInDb extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 获取商品信息
+		// 鑾峰彇鍟嗗搧淇℃伅
 		String title = request.getParameter("title");
 		int price = Integer.parseInt(request.getParameter("price"));
 		String img_url = request.getParameter("img_url");
@@ -31,9 +31,9 @@ public class ServletAddGoodsInDb extends HttpServlet {
 		boolean f = dao.add(vo);
 		
 		if (f) {
-			// 添加成功...
+			// 娣诲姞鎴愬姛...
 		} else {
-			// 添加失败...
+			// 娣诲姞澶辫触...
 		}
 		
 	}
