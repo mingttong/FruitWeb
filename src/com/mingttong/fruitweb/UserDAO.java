@@ -43,5 +43,11 @@ public class UserDAO extends BaseDAO {
 		
 		return vo;
 	}
+	
+	public static void main(String[] args) {
+		UserDAO dao = new UserDAO();
+		Connection conn = dao.getConn();
+		
+	}
 
 }

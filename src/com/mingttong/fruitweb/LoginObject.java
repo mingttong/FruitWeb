@@ -36,4 +36,13 @@ public class LoginObject {
 		return f;
 	}
 	
+	public static void main(String[] args) {
+		LoginObject loginObj = new LoginObject("test", "123");
+		if (loginObj.checkLoginInfo()) {
+			System.out.println("³É¹¦£¡");
+		} else {
+			System.out.println("Ê§°Ü£¡");
+		}
+	}
+	
 }
