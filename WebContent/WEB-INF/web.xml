@@ -29,4 +29,14 @@
     <servlet-name>ServletReg</servlet-name>
     <url-pattern>/reg.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAddGoodsInDb</display-name>
+    <servlet-name>ServletAddGoodsInDb</servlet-name>
+    <servlet-class>com.mingttong.fruitweb.ServletAddGoodsInDb</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAddGoodsInDb</servlet-name>
+    <url-pattern>/addGoodsInDb.do</url-pattern>
+  </servlet-mapping>
 </web-app>
