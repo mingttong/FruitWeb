@@ -10,12 +10,14 @@
 <h1>注册</h1>
 <hr />
 
-<form action="reg.do" action="post">
+<form action="reg.do">
     用户名：<input type="text" name="usr"/>
     <br/>
     密码：<input type="password" name="pwd"/>
     <br/>
     确认密码：<input type="password" name="pwd2"/>
+    <br/>
+    <input type="submit" value="注册"/>
 </form>
 
 </body>

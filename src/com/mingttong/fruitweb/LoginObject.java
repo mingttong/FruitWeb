@@ -10,6 +10,32 @@ public class LoginObject {
 		this.password = pwd;
 	}
 	
+	
+	
+	public String getUser_name() {
+		return user_name;
+	}
+
+
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
 	/**
 	 * 判断用户名密码是否正确
 	 * @return boolean 返回结果
