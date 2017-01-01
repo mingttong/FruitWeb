@@ -67,9 +67,6 @@ public class ServletLogin extends HttpServlet {
 		String user_name = request.getParameter("usr");
 		String password = request.getParameter("pwd");
 		
-		// 用户登录信息....之后可以拓展
-		String user_info = user_name;
-		
 		// 获取session
 		HttpSession session = request.getSession();
 		
@@ -77,20 +74,15 @@ public class ServletLogin extends HttpServlet {
 			// 账号密码正确
 			
 			// session缓存用户信息
-			session.setAttribute(loginKey, user_info);
+			session.setAttribute(loginKey, user_name);
 			
 			// 跳转网站首页
 			request.getRequestDispatcher(success_url).forward(request, response);
 			
-//			RequestDispatcher rd = request.getRequestDispatcher(success_url);
-//			rd.forward(request, response);
-			
 		} else {
 			// 账号密码错误，跳转回登录页面
 			request.getRequestDispatcher(fail_url).forward(request, response);
-			
-//			RequestDispatcher rd = request.getRequestDispatcher(fail_url);
-//			rd.forward(request, response);
+
 			System.out.println("登录失败！");
 		}
 	}

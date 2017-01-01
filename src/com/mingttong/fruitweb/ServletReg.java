@@ -21,8 +21,9 @@ public class ServletReg extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String reg_url = "reg.jsp";
-		String index_url = "index.jsp";
+		String fail_url = "reg.jsp";
+		String success_url = "index.jsp";
+		String loginKey = "LOGIN_RES";
 		
 		String usr = request.getParameter("usr");
 		String pwd = request.getParameter("pwd");
@@ -39,11 +40,10 @@ public class ServletReg extends HttpServlet {
 			
 			// 在session中存储登录信息
 			HttpSession session = request.getSession();
-			session.setAttribute("LOGIN_RES", usr);
+			session.setAttribute(loginKey, usr);
 			
 			// 跳转至welcome.jsp并显示提示
-			RequestDispatcher rd = request.getRequestDispatcher(index_url);
-	    	rd.forward(request, response);
+			request.getRequestDispatcher(success_url).forward(request, response);
 		} else {
 			System.out.println("注册失败！");
 			
@@ -52,8 +52,7 @@ public class ServletReg extends HttpServlet {
 			session.setAttribute("REG_RES", "该用户名已经注册了！");
 			
 			// 跳转至reg.jsp并显示提示
-			RequestDispatcher rd = request.getRequestDispatcher(reg_url);
-	    	rd.forward(request, response);
+			request.getRequestDispatcher(fail_url).forward(request, response);
 		}
 	}
 
