@@ -4,8 +4,50 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GoodsDAO extends BaseDAO {
+	
+	/**
+	 * 获取数据库中的所有商品信息
+	 * @return
+	 */
+	public List<GoodsVO> getGoodsList() {
+		List<GoodsVO> goodsList = new ArrayList<GoodsVO>();
+		Connection conn = getConn();
+		
+		String sql = "select title, price, img_url from goods";
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+		
+			ResultSet rs = ps.executeQuery();
+			GoodsVO vo = null; // 用于缓存商品信息
+			
+			while (rs.next()) {
+				
+				String title = rs.getString("title");
+				int price = rs.getInt("price");
+				String imgUrl = rs.getString("img_url");
+				vo = new GoodsVO(title, price, imgUrl);
+				goodsList.add(vo); // 将商品信息加入到商品列表中
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return goodsList;
+	}
+	
+	//**************测试getGoodList()方法
+//	public static void main(String[] args) {
+//		GoodsDAO dao = new GoodsDAO();
+//		List<GoodsVO> goodsList = dao.getGoodsList();
+//		
+//	}
 	
 	/**
 	 * 根据title查找商品信息
@@ -108,30 +150,31 @@ public class GoodsDAO extends BaseDAO {
 		return f;
 	}
 	
-	public static void main(String[] args) {
-		String titleInDb = "";
-		
-		GoodsDAO dao = new GoodsDAO();
-		Connection conn = dao.getConn();
-		String sql = "select title from goods where goods_id=1005";
-		
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			
-			if (rs.next()) {
-				titleInDb = rs.getString("title");
-			} else {
-				titleInDb = "没找到！";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			dao.close(conn);
-		}
-		
-		System.out.println(titleInDb);
-		
-	}
+	//***************测试getConn()方法
+//	public static void main(String[] args) {
+//		String titleInDb = "";
+//		
+//		GoodsDAO dao = new GoodsDAO();
+//		Connection conn = dao.getConn();
+//		String sql = "select title from goods where goods_id=1005";
+//		
+//		try {
+//			PreparedStatement ps = conn.prepareStatement(sql);
+//			ResultSet rs = ps.executeQuery();
+//			
+//			if (rs.next()) {
+//				titleInDb = rs.getString("title");
+//			} else {
+//				titleInDb = "没找到！";
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			dao.close(conn);
+//		}
+//		
+//		System.out.println(titleInDb);
+//		
+//	}
 
 }

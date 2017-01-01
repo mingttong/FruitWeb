@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.mingttong.fruitweb.GoodsDAO" %>
+<%@ page import="com.mingttong.fruitweb.GoodsVO" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,27 +23,29 @@
 </header>
 
 <%
-
+GoodsDAO dao = new GoodsDAO();
+List<GoodsVO> goodsList = dao.getGoodsList(); // 获取商品列表
 %>
 
 <div id="goodsList">
     <ul class="gl-wrap clearfix">
+    <%for (GoodsVO vo : goodsList) { %>
         <li class="gl-item">
             <div class="gl-i-wrap">
                 <div class="p-img">
-                    <a target="_blank" href="#" title="爱奇果 陕西眉县猕猴桃 15粒礼盒装 单果80-90g">
-                        <img src="img/mihoutao.jpg" alt="猕猴桃图片" class="err-product"/>
+                    <a target="_blank" href="#" title="<%=vo.getTitle() %>">
+                        <img src="<%=vo.getImgUrl() %>" alt="<%=vo.getTitle() %>" class="err-product"/>
                     </a>
                 </div>
                 <div class="p-price">
                     <strong>
                         <em>￥</em>
-                        <i>21.90</i>
+                        <i><%=vo.getPrice() %></i>
                     </strong>
                 </div>
                 <div class="p-name">
-                    <a target="_blank" title="爱奇果 陕西眉县猕猴桃 15粒礼盒装 单果80-90g"  href="#">
-                        <em>爱奇果 陕西眉县猕猴桃 15粒礼盒装 单果80-90g</em>
+                    <a target="_blank" title="<%=vo.getTitle() %>"  href="#">
+                        <em><%=vo.getTitle() %></em>
                     </a>
                 </div>
                 <div class="p-operate">
@@ -50,6 +55,7 @@
                 </div>
             </div>
         </li>
+    <%} %>
     </ul>
 </div>
 
