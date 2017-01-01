@@ -21,7 +21,7 @@ public class ServletLogoff extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "login.jsp"; // 跳转回登录页面
+		String url = "login.jsp"; // 退出登录后，跳转回登录页面
 		
 		// 获取该浏览器对应的session，并将其删除
 		HttpSession session = request.getSession();

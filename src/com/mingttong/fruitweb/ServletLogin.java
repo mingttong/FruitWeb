@@ -7,13 +7,53 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class ServletLogin extends HttpServlet {
+	
+	private String loginKey = "LOGIN_RES";
+	
+	public String getLoginKey() {
+		return loginKey;
+	}
+
+	public void setLoginKey(String loginKey) {
+		this.loginKey = loginKey;
+	}
+
 	private static final long serialVersionUID = 1L;
        
     public ServletLogin() {
         super();
     }
+    
+    /**
+     * 判断用户名和密码是否正确
+     * @param user_name
+     * @param password
+     * @return
+     */
+	public boolean checkLoginInfo (String user_name, String password) {
+		boolean f = false;
+		
+		UserVO vo = null;
+		UserDAO dao = new UserDAO();
+		vo = dao.findByUsr(user_name);
+		
+		// 用户存在
+		if (vo != null) {
+			// 匹配密码是否正确
+			f = vo.getPassword().equals(password) ? true : false;
+			
+		// 用户不存在
+		} else {
+			
+			System.out.println("用户不存在！");
+			
+		}
+		
+		return f;
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.doPost(request, response);
@@ -27,18 +67,30 @@ public class ServletLogin extends HttpServlet {
 		String user_name = request.getParameter("usr");
 		String password = request.getParameter("pwd");
 		
-		// 初始化登录对象，检查登录信息
-		LoginObject loginObj = new LoginObject(user_name, password);
+		// 用户登录信息....之后可以拓展
+		String user_info = user_name;
 		
-		if (loginObj.checkLoginInfo()) {
-			// 账号密码正确，跳转网站首页
-			RequestDispatcher rd = request.getRequestDispatcher(success_url);
-			rd.forward(request, response);
+		// 获取session
+		HttpSession session = request.getSession();
+		
+		if (checkLoginInfo(user_name, password)) {
+			// 账号密码正确
+			
+			// session缓存用户信息
+			session.setAttribute(loginKey, user_info);
+			
+			// 跳转网站首页
+			request.getRequestDispatcher(success_url).forward(request, response);
+			
+//			RequestDispatcher rd = request.getRequestDispatcher(success_url);
+//			rd.forward(request, response);
 			
 		} else {
 			// 账号密码错误，跳转回登录页面
-			RequestDispatcher rd = request.getRequestDispatcher(fail_url);
-			rd.forward(request, response);
+			request.getRequestDispatcher(fail_url).forward(request, response);
+			
+//			RequestDispatcher rd = request.getRequestDispatcher(fail_url);
+//			rd.forward(request, response);
 			System.out.println("登录失败！");
 		}
 	}
