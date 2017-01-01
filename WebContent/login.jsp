@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>请登录</title>
 </head>
 <body>
-<h1>注册</h1>
+<h1>登录</h1>
 <hr />
 
 <form action="login.do" method="post">
