@@ -1,6 +1,8 @@
 package com.mingttong.fruitweb;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +21,10 @@ public class ServletAddGoodsInDb extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String addPage_url = "addGoodsInDb.jsp";
+		
+		request.setCharacterEncoding("UTF-8"); // 对jsp传过来的值重新进行编码
+		
 		// 获取商品信息
 		String title = request.getParameter("title");
 		int price = Integer.parseInt(request.getParameter("price"));
@@ -32,9 +38,14 @@ public class ServletAddGoodsInDb extends HttpServlet {
 		
 		if (f) {
 			// 添加成功...
+			System.out.println("添加成功！");
 		} else {
 			// 添加失败...
+			System.out.println("添加失败！");
 		}
+		
+		RequestDispatcher rd = request.getRequestDispatcher(addPage_url);
+		rd.forward(request, response);
 		
 	}
 

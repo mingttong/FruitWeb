@@ -20,7 +20,7 @@ public class GoodsDAO extends BaseDAO {
 		String imgUrlInDb = "";
 		
 		Connection conn = getConn();
-		String sql = "select title, price, img_url where title=?";
+		String sql = "select title, price, img_url from goods where title=?";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -52,6 +52,8 @@ public class GoodsDAO extends BaseDAO {
 	 * 查找商品信息是否存在
 	 * @param title
 	 * @return 是否存在
+	 * 
+	 * error: 如果出现了错误，则返回false，但逻辑上应该是不对的。
 	 */
 	public boolean checkExist(String title) {
 		boolean f = false;
