@@ -9,9 +9,13 @@
 <body>
 
 <h1>网站首页</h1>
-<hr />
+<hr/>
 
 <h1>欢迎！</h1>
+
+<form action="logoff.do" method="post">
+    <input type="submit" value="退出"/>
+</form>
 
 </body>
 </html>

@@ -39,4 +39,14 @@
     <servlet-name>ServletAddGoodsInDb</servlet-name>
     <url-pattern>/addGoodsInDb.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletLogoff</display-name>
+    <servlet-name>ServletLogoff</servlet-name>
+    <servlet-class>com.mingttong.fruitweb.ServletLogoff</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletLogoff</servlet-name>
+    <url-pattern>/logoff.do</url-pattern>
+  </servlet-mapping>
 </web-app>
