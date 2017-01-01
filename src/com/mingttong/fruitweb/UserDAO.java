@@ -7,9 +7,9 @@ import java.sql.ResultSet;
 public class UserDAO extends BaseDAO {
 	
 	/**
-	 * ¸ù¾İÓÃ»§Ãû²éÕÒÓÃ»§ĞÅÏ¢
+	 * æ ¹æ®ç”¨æˆ·åæŸ¥æ‰¾ç”¨æˆ·ä¿¡æ¯
 	 * @param user_name
-	 * @return ·µ»ØÓÃ»§ĞÅÏ¢
+	 * @return è¿”å›ç”¨æˆ·ä¿¡æ¯
 	 */
 	public UserVO findByUsr(String user_name) {
 		UserVO vo = null;
@@ -32,7 +32,7 @@ public class UserDAO extends BaseDAO {
 				vo = new UserVO(usrInDb, pwdInDb);
 				
 			} else {
-				System.out.println("ÓÃ»§Ãû²»´æÔÚ£¡");
+				System.out.println("ç”¨æˆ·åä¸å­˜åœ¨ï¼");
 			}
 			
 		} catch (Exception e) {
@@ -45,9 +45,9 @@ public class UserDAO extends BaseDAO {
 	}
 	
 	/**
-	 * ÏòÊı¾İ±íÌí¼ÓÑ§ÉúĞÅÏ¢
+	 * å‘æ•°æ®è¡¨æ·»åŠ å­¦ç”Ÿä¿¡æ¯
 	 * @param vo
-	 * @return ÊÇ·ñÌí¼Ó³É¹¦
+	 * @return æ˜¯å¦æ·»åŠ æˆåŠŸ
 	 */
 	public boolean add(UserVO vo) {
 		boolean f = false;
@@ -62,7 +62,7 @@ public class UserDAO extends BaseDAO {
 				ps.setString(1, usr);
 				ps.setString(2, pwd);
 
-				int count = ps.executeUpdate(); // Ö´ĞĞsql
+				int count = ps.executeUpdate(); // æ‰§è¡Œsql
 
 				if (count > 0) {
 					f = true;

@@ -8,9 +8,9 @@ import java.sql.SQLException;
 public class GoodsDAO extends BaseDAO {
 	
 	/**
-	 * 根据title查找商品信息
+	 * 鏍规嵁title鏌ユ壘鍟嗗搧淇℃伅
 	 * @param user_name
-	 * @return 返回商品信息VO对象
+	 * @return 杩斿洖鍟嗗搧淇℃伅VO瀵硅薄
 	 */
 	public GoodsVO findByTitle(String title) {
 		GoodsVO vo = null;
@@ -36,7 +36,7 @@ public class GoodsDAO extends BaseDAO {
 				vo = new GoodsVO(titleInDb, priceInDb, imgUrlInDb);
 				
 			} else {
-				System.out.println("商品不存在！");
+				System.out.println("鍟嗗搧涓嶅瓨鍦紒");
 			}
 			
 		} catch (Exception e) {
@@ -49,9 +49,9 @@ public class GoodsDAO extends BaseDAO {
 	}
 	
 	/**
-	 * 查找商品信息是否存在
+	 * 鏌ユ壘鍟嗗搧淇℃伅鏄惁瀛樺湪
 	 * @param title
-	 * @return 是否存在
+	 * @return 鏄惁瀛樺湪
 	 */
 	public boolean checkExist(String title) {
 		boolean f = false;
@@ -64,9 +64,9 @@ public class GoodsDAO extends BaseDAO {
 	}
 	
 	/**
-	 * 向数据库添加商品信息
+	 * 鍚戞暟鎹簱娣诲姞鍟嗗搧淇℃伅
 	 * @param vo
-	 * @return 是否添加成功
+	 * @return 鏄惁娣诲姞鎴愬姛
 	 */
 	public boolean add(GoodsVO vo) {
 		boolean f = false;
@@ -87,7 +87,7 @@ public class GoodsDAO extends BaseDAO {
 				ps.setString(3, imgUrl);
 //				ps.setString(4, madeIn);
 
-				int count = ps.executeUpdate(); // 执行sql
+				int count = ps.executeUpdate(); // 鎵цsql
 
 				if (count > 0) {
 					f = true;
@@ -120,7 +120,7 @@ public class GoodsDAO extends BaseDAO {
 			if (rs.next()) {
 				titleInDb = rs.getString("title");
 			} else {
-				titleInDb = "没找到！";
+				titleInDb = "娌℃壘鍒帮紒";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

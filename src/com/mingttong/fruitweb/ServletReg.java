@@ -35,23 +35,23 @@ public class ServletReg extends HttpServlet {
 		f = dao.add(vo);
 		
 		if (f) {
-			System.out.println("×¢²á³É¹¦£¡");
+			System.out.println("æ³¨å†ŒæˆåŠŸï¼");
 			
-			// ÔÚsessionÖĞ´æ´¢µÇÂ¼ĞÅÏ¢
+			// åœ¨sessionä¸­å­˜å‚¨ç™»å½•ä¿¡æ¯
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGIN_RES", usr);
 			
-			// Ìø×ªÖÁwelcome.jsp²¢ÏÔÊ¾ÌáÊ¾
+			// è·³è½¬è‡³welcome.jspå¹¶æ˜¾ç¤ºæç¤º
 			RequestDispatcher rd = request.getRequestDispatcher(index_url);
 	    	rd.forward(request, response);
 		} else {
-			System.out.println("×¢²áÊ§°Ü£¡");
+			System.out.println("æ³¨å†Œå¤±è´¥ï¼");
 			
-			// ÔÚsessionÖĞ´æ´¢×¢²áÌáÊ¾ĞÅÏ¢
+			// åœ¨sessionä¸­å­˜å‚¨æ³¨å†Œæç¤ºä¿¡æ¯
 			HttpSession session = request.getSession();
-			session.setAttribute("REG_RES", "¸ÃÓÃ»§ÃûÒÑ¾­×¢²áÁË£¡");
+			session.setAttribute("REG_RES", "è¯¥ç”¨æˆ·åå·²ç»æ³¨å†Œäº†ï¼");
 			
-			// Ìø×ªÖÁreg.jsp²¢ÏÔÊ¾ÌáÊ¾
+			// è·³è½¬è‡³reg.jspå¹¶æ˜¾ç¤ºæç¤º
 			RequestDispatcher rd = request.getRequestDispatcher(reg_url);
 	    	rd.forward(request, response);
 		}

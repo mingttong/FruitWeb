@@ -4,8 +4,8 @@ public class GoodsVO {
 	
 	private String title = "";
 	private int price = 0;
-	private String imgUrl = ""; // 商品图片地址
-//	private String madeIn = ""; // 商品产地
+	private String imgUrl = ""; // 鍟嗗搧鍥剧墖鍦板潃
+//	private String madeIn = ""; // 鍟嗗搧浜у湴
 	
 	/*
 	 * getter/setter

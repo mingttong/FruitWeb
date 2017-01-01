@@ -23,23 +23,23 @@ public class ServletLogin extends HttpServlet {
 		String index_url = "index.jsp";
 		String login_url = "login.jsp";
 		
-		// ½ÓÊÕµÇÂ¼ĞÅÏ¢
+		// æ¥æ”¶ç™»å½•ä¿¡æ¯
 		String user_name = request.getParameter("usr");
 		String password = request.getParameter("pwd");
 		
-		// ³õÊ¼»¯µÇÂ¼¶ÔÏó£¬¼ì²éµÇÂ¼ĞÅÏ¢
+		// åˆå§‹åŒ–ç™»å½•å¯¹è±¡ï¼Œæ£€æŸ¥ç™»å½•ä¿¡æ¯
 		LoginObject loginObj = new LoginObject(user_name, password);
 		
 		if (loginObj.checkLoginInfo()) {
-			// ÕËºÅÃÜÂëÕıÈ·£¬Ìø×ªÍøÕ¾Ê×Ò³
+			// è´¦å·å¯†ç æ­£ç¡®ï¼Œè·³è½¬ç½‘ç«™é¦–é¡µ
 			RequestDispatcher rd = request.getRequestDispatcher(index_url);
 			rd.forward(request, response);
 			
 		} else {
-			// ÕËºÅÃÜÂë´íÎó£¬Ìø×ª»ØµÇÂ¼Ò³Ãæ
+			// è´¦å·å¯†ç é”™è¯¯ï¼Œè·³è½¬å›ç™»å½•é¡µé¢
 			RequestDispatcher rd = request.getRequestDispatcher(login_url);
 			rd.forward(request, response);
-			System.out.println("µÇÂ¼Ê§°Ü£¡");
+			System.out.println("ç™»å½•å¤±è´¥ï¼");
 		}
 	}
 

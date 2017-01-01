@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class BaseDAO {
 	
 	/**
-	 * ¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+	 * å…³é—­æ•°æ®åº“è¿æ¥
 	 * @param conn
 	 */
 	public void close(Connection conn) {
@@ -22,17 +22,17 @@ public class BaseDAO {
 	}
 	
 	/**
-	 * »ñÈ¡Êı¾İ¿âÁ¬½Ó
-	 * @return ·µ»ØÊı¾İ¿âÁ¬½Ó
+	 * è·å–æ•°æ®åº“è¿æ¥
+	 * @return è¿”å›æ•°æ®åº“è¿æ¥
 	 */
 	public Connection getConn() {
 		Connection conn = null;
 		
 		try {
-			// 1. ¼ÓÔØÇı¶¯
+			// 1. åŠ è½½é©±åŠ¨
 			Class.forName("com.mysql.jdbc.Driver");
-			// 2. »ñÈ¡Ö¸¶¨Êı¾İ¿âµÄÁ¬½Ó¶ÔÏó
-			String url = "jdbc:mysql://127.0.0.1:3306/fruit";
+			// 2. è·å–æŒ‡å®šæ•°æ®åº“çš„è¿æ¥å¯¹è±¡
+			String url = "jdbc:mysql://127.0.0.1:3306/fruit?useUnicode=true&characterEncoding=UTF-8";
 			conn = DriverManager.getConnection(url, "root", "");
 		} catch (Exception e) {
 			e.printStackTrace();

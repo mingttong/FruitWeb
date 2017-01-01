@@ -37,8 +37,8 @@ public class LoginObject {
 
 
 	/**
-	 * ÅĞ¶ÏÓÃ»§ÃûÃÜÂëÊÇ·ñÕıÈ·
-	 * @return boolean ·µ»Ø½á¹û
+	 * åˆ¤æ–­ç”¨æˆ·åå¯†ç æ˜¯å¦æ­£ç¡®
+	 * @return boolean è¿”å›ç»“æœ
 	 */
 	public boolean checkLoginInfo () {
 		boolean f = false;
@@ -47,15 +47,15 @@ public class LoginObject {
 		UserDAO dao = new UserDAO();
 		vo = dao.findByUsr(this.user_name);
 		
-		// ÓÃ»§´æÔÚ
+		// ç”¨æˆ·å­˜åœ¨
 		if (vo != null) {
-			// Æ¥ÅäÃÜÂëÊÇ·ñÕıÈ·
+			// åŒ¹é…å¯†ç æ˜¯å¦æ­£ç¡®
 			f = vo.getPassword().equals(password) ? true : false;
 			
-		// ÓÃ»§²»´æÔÚ
+		// ç”¨æˆ·ä¸å­˜åœ¨
 		} else {
 			
-			System.out.println("ÓÃ»§²»´æÔÚ£¡");
+			System.out.println("ç”¨æˆ·ä¸å­˜åœ¨ï¼");
 			
 		}
 		
@@ -65,9 +65,9 @@ public class LoginObject {
 	public static void main(String[] args) {
 		LoginObject loginObj = new LoginObject("test", "123");
 		if (loginObj.checkLoginInfo()) {
-			System.out.println("³É¹¦£¡");
+			System.out.println("æˆåŠŸï¼");
 		} else {
-			System.out.println("Ê§°Ü£¡");
+			System.out.println("å¤±è´¥ï¼");
 		}
 	}
 	
