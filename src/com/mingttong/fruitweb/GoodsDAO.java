@@ -58,12 +58,13 @@ public class GoodsDAO extends BaseDAO {
 	public GoodsVO findByTitle(String title) {
 		GoodsVO vo = null;
 		
+		int goodsIDInDb = 0;
 		String titleInDb = "";
 		int priceInDb = 0;
 		String imgUrlInDb = "";
 		
 		Connection conn = getConn();
-		String sql = "select title, price, img_url from goods where title=?";
+		String sql = "select goods_id, title, price, img_url from goods where title=?";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -73,10 +74,11 @@ public class GoodsDAO extends BaseDAO {
 			
 			if (rs.next()) {
 				
+				goodsIDInDb = rs.getInt("goods_id");
 				titleInDb = rs.getString("title");
 				priceInDb = rs.getInt("price");
 				imgUrlInDb = rs.getString("img_url");
-				vo = new GoodsVO(titleInDb, priceInDb, imgUrlInDb);
+				vo = new GoodsVO(goodsIDInDb, titleInDb, priceInDb, imgUrlInDb);
 				
 			} else {
 				System.out.println("商品不存在！");
