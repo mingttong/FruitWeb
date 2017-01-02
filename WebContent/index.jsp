@@ -16,7 +16,7 @@
 
 <h1>欢迎！</h1>
 
-<a href="cart.jsp">我的购物车</a>
+<a href="cart.jsp" target="_blank">我的购物车</a>
 
 <header>
     <form action="logoff.do" method="post">

@@ -31,37 +31,40 @@ function submitPost(url, dataToPost) {
 function deleteItem(btn) {
 
     var goods_id = btn.getAttribute("data-sku");
-    var url = "deleteItem.do";
-    var dataToPost = {
-        goodsID : goods_id
-    };
+    var url = "deleteItem.do?goodsID=" + goods_id;
 
-    var result = submitPost(url, dataToPost);
-
-    console.log(result);
-
+    ajaxUpdateItem(url);
 }
 
 function increaseItem(btn) {
 
     var goods_id = btn.getAttribute("data-sku");
-    var url = "increaseItem.do";
-    var dataToPost = {
-        goodsID : goods_id
-    };
+    var url = "increaseItem.do?goodsID=" + goods_id;
 
-    var result = submitPost(url, dataToPost);
-
+    ajaxUpdateItem(url);
 }
 
 function decreaseItem(btn) {
 
     var goods_id = btn.getAttribute("data-sku");
-    var url = "decreaseItem.do";
-    var dataToPost = {
-        goodsID : goods_id
-    };
+    var url = "decreaseItem.do?goodsID=" + goods_id;
 
-    var result = submitPost(url, dataToPost);
+    ajaxUpdateItem(url);
+}
 
+function addCart(anchor) {
+    var goods_id = anchor.getAttribute("data-sku"); // 商品ID
+    var url = "addCart.do?goodsID=" + goods_id;
+
+    var request = new XMLHttpRequest();
+    request.open("GET", url, true);
+    request.send();
+
+}
+
+function ajaxUpdateItem(url) {
+
+    var request = new XMLHttpRequest();
+    request.open("GET", url, true);
+    request.send();
 }
