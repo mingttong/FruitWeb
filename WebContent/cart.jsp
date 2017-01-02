@@ -45,12 +45,14 @@ Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
                 <strong><%=item.getPrice() * item.getNum() %></strong>
             </div>
             <div class="p-ops">
-                <a data-sku="<%=goodsID %>" href="javascript:void(0)">删除</a>
+                <a data-sku="<%=goodsID %>" href="javascript:void(0)" onclick="deleteItem(this)">删除</a>
             </div>
         </div>
     <%} %>
     </div>
 </div>
 <%} %>
+
+<script src="js/cart.js"></script>
 </body>
 </html>

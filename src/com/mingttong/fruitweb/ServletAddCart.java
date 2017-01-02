@@ -39,11 +39,13 @@ public class ServletAddCart extends HttpServlet {
 		// 检查"GOODS_IN_CART"是否创建
 		if (session.getAttribute("GOODS_IN_CART") == null) {
 			
+			// 初始化购物车
+			Map<Integer, ItemVO> cart = new HashMap<Integer, ItemVO>();
+			
 			// 初始化该商品，其数目为1
 			ItemVO item = new ItemVO(vo.getTitle(), vo.getPrice(), vo.getImgUrl(), 1);
 			
 			// 将商品放入购物车中
-			Map<Integer, ItemVO> cart = new HashMap<Integer, ItemVO>();
 			cart.put(goodsID, item);
 			
 			// 将购物车保存在session中
