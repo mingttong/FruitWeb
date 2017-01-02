@@ -30,7 +30,7 @@ List<GoodsVO> goodsList = dao.getGoodsList(); // 获取商品列表
 <div id="goodsList">
     <ul class="gl-wrap clearfix">
     <%for (GoodsVO vo : goodsList) { %>
-        <li id="" class="gl-item">
+        <li id="<%=vo.getGoodsID() %>" class="gl-item">
             <div class="gl-i-wrap">
                 <div class="p-img">
                     <a target="_blank" href="#" title="<%=vo.getTitle() %>">

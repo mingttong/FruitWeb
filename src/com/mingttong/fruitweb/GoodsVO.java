@@ -12,11 +12,11 @@ public class GoodsVO {
 	 * ***********start***********
 	 */
 	
-	public int getGoodsId() {
+	public int getGoodsID() {
 		return goodsID;
 	}
-	public void setGoodsId(int goodsId) {
-		this.goodsID = goodsId;
+	public void setGoodsID(int goodsID) {
+		this.goodsID = goodsID;
 	}
 	public String getTitle() {
 		return title;
@@ -47,9 +47,9 @@ public class GoodsVO {
 		this.imgUrl = imgUrl;
 	}
 	
-	public GoodsVO(int goodsId, String title, int price, String imgUrl) {
+	public GoodsVO(int goodsID, String title, int price, String imgUrl) {
 		super();
-		this.goodsID = goodsId;
+		this.goodsID = goodsID;
 		this.title = title;
 		this.price = price;
 		this.imgUrl = imgUrl;
