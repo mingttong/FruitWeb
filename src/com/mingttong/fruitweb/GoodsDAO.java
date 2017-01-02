@@ -17,7 +17,7 @@ public class GoodsDAO extends BaseDAO {
 		List<GoodsVO> goodsList = new ArrayList<GoodsVO>();
 		Connection conn = getConn();
 		
-		String sql = "select title, price, img_url from goods";
+		String sql = "select goods_id, title, price, img_url from goods";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -27,10 +27,11 @@ public class GoodsDAO extends BaseDAO {
 			
 			while (rs.next()) {
 				
+				int goodsID = rs.getInt("goods_id");
 				String title = rs.getString("title");
 				int price = rs.getInt("price");
 				String imgUrl = rs.getString("img_url");
-				vo = new GoodsVO(title, price, imgUrl);
+				vo = new GoodsVO(goodsID, title, price, imgUrl);
 				goodsList.add(vo); // 将商品信息加入到商品列表中
 				
 			}
