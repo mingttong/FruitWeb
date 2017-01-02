@@ -30,6 +30,7 @@ function addCart(btn) {
 
     document.body.appendChild(tmp_form);
     tmp_form.submit();
+    document.body.removeChild(tmp_form);
 
     return tmp_form;
 }

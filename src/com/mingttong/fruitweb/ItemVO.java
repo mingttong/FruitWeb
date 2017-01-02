@@ -7,11 +7,18 @@ package com.mingttong.fruitweb;
  */
 public class ItemVO {
 	
+//	private int goodsID;
 	private String title;
 	private int price;
 	private String imgUrl;
 	private int num;
 	
+//	public int getGoodsID() {
+//		return goodsID;
+//	}
+//	public void setGoodsID(int goodsID) {
+//		this.goodsID = goodsID;
+//	}
 	public String getTitle() {
 		return title;
 	}
@@ -44,5 +51,14 @@ public class ItemVO {
 		this.imgUrl = imgUrl;
 		this.num = num;
 	}
-
+	
+//	public ItemVO(int goodsID, String title, int price, String imgUrl, int num) {
+//		super();
+//		this.goodsID = goodsID;
+//		this.title = title;
+//		this.price = price;
+//		this.imgUrl = imgUrl;
+//		this.num = num;
+//	}
+	
 }
