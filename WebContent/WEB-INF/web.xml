@@ -61,16 +61,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>addCart</display-name>
-    <servlet-name>addCart</servlet-name>
-    <servlet-class>com.mingttong.fruitweb.addCart</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>addCart</servlet-name>
-    <url-pattern>/addCart</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>ServletAddCart</display-name>
     <servlet-name>ServletAddCart</servlet-name>
     <servlet-class>com.mingttong.fruitweb.ServletAddCart</servlet-class>
@@ -78,5 +68,15 @@
   <servlet-mapping>
     <servlet-name>ServletAddCart</servlet-name>
     <url-pattern>/addCart.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletDeleteItem</display-name>
+    <servlet-name>ServletDeleteItem</servlet-name>
+    <servlet-class>com.mingttong.fruitweb.ServletDeleteItem</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDeleteItem</servlet-name>
+    <url-pattern>/ServletDeleteItem</url-pattern>
   </servlet-mapping>
 </web-app>

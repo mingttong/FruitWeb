@@ -37,9 +37,9 @@ Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
                 <strong><%=item.getPrice() %></strong>
             </div>
             <div class="p-quantity">
-                <a href="javascript:void(0)">-</a>
+                <a data-sku="<%=goodsID %>" href="javascript:void(0)">-</a>
                 <input type="text" value="<%=item.getNum() %>"/>
-                <a href="javascript:void(0)">+</a>
+                <a data-sku="<%=goodsID %>" href="javascript:void(0)">+</a>
             </div>
             <div class="p-sum">
                 <strong><%=item.getPrice() * item.getNum() %></strong>
