@@ -2,15 +2,22 @@ package com.mingttong.fruitweb;
 
 public class GoodsVO {
 	
+	private int goodsId = 0;
 	private String title = "";
 	private int price = 0;
 	private String imgUrl = ""; // 商品图片地址
-//	private String madeIn = ""; // 商品产地
 	
 	/*
 	 * getter/setter
 	 * ***********start***********
 	 */
+	
+	public int getGoodsId() {
+		return goodsId;
+	}
+	public void setGoodsId(int goodsId) {
+		this.goodsId = goodsId;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -29,12 +36,6 @@ public class GoodsVO {
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
-//	public String getMadeIn() {
-//		return madeIn;
-//	}
-//	public void setMadeIn(String madeIn) {
-//		this.madeIn = madeIn;
-//	}
 	/*
 	 * **************end***************
 	 */
@@ -44,11 +45,14 @@ public class GoodsVO {
 		this.title = title;
 		this.price = price;
 		this.imgUrl = imgUrl;
-//		this.madeIn = madeIn;
 	}
 	
-	
-	
-	
+	public GoodsVO(int goodsId, String title, int price, String imgUrl) {
+		super();
+		this.goodsId = goodsId;
+		this.title = title;
+		this.price = price;
+		this.imgUrl = imgUrl;
+	}
 
 }
