@@ -11,7 +11,11 @@
 </head>
 <body>
 
+<h1>购物车</h1>
+<hr/>
+
 <%
+if (session.getAttribute("GOODS_IN_CART") != null) {
 Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
 %>
 
@@ -20,7 +24,7 @@ Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
     <%for (int goodsID : cart.keySet()) {
     	ItemVO item = cart.get(goodsID);
     %>
-        <div class="item-item">
+        <div id="<%=goodsID %>" class="item-item">
             <div class="goods">
                 <div class="img">
                     <img src="<%=item.getImgUrl() %>" alt="<%=item.getImgUrl() %>"/>
@@ -47,6 +51,6 @@ Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
     <%} %>
     </div>
 </div>
-
+<%} %>
 </body>
 </html>
