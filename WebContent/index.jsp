@@ -51,7 +51,7 @@ List<GoodsVO> goodsList = dao.getGoodsList(); // 获取商品列表
                     </a>
                 </div>
                 <div class="p-operate">
-                    <a data-sku="<%=vo.getGoodsID() %>" href="addCart.do?goodsID=<%=vo.getGoodsID() %>">加入购物车</a>
+                    <a data-sku="<%=vo.getGoodsID() %>" href="javascript:void(0)" onclick="addCart(this)">加入购物车</a>
                 </div>
             </div>
         </li>
