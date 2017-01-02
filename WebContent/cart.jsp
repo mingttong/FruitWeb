@@ -25,7 +25,7 @@ Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
     	ItemVO item = cart.get(goodsID);
     %>
         <div id="<%=goodsID %>" class="item-item">
-            <div class="goods">
+            <div class="p-goods">
                 <div class="img">
                     <img src="<%=item.getImgUrl() %>" alt="<%=item.getImgUrl() %>"/>
                 </div>
@@ -33,18 +33,18 @@ Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
                     <em><%=item.getTitle() %></em>
                 </div>
             </div>
-            <div class="price">
+            <div class="p-price">
                 <strong><%=item.getPrice() %></strong>
             </div>
-            <div class="quantity">
+            <div class="p-quantity">
                 <a href="javascript:void(0)">-</a>
                 <input type="text" value="<%=item.getNum() %>"/>
                 <a href="javascript:void(0)">+</a>
             </div>
-            <div class="sum">
+            <div class="p-sum">
                 <strong><%=item.getPrice() * item.getNum() %></strong>
             </div>
-            <div class="options">
+            <div class="p-ops">
                 <a data-sku="<%=goodsID %>" href="javascript:void(0)">删除</a>
             </div>
         </div>
