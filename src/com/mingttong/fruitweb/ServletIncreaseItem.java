@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * 删除购物车中的商品
+ * 增加购物车中商品的数量
  * @author lenovo
  *
  */
-public class ServletDeleteItem extends HttpServlet {
+public class ServletIncreaseItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public ServletDeleteItem() {
+       
+    public ServletIncreaseItem() {
         super();
     }
 
@@ -35,11 +35,14 @@ public class ServletDeleteItem extends HttpServlet {
 		// 获取购物车
 		Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
 		
-		// 将购物车中对应的商品删除
-		// 判断是否删除成功？
-		cart.remove(goodsID);
+		// 获取商品
+		ItemVO item = cart.get(goodsID);
 		
-		// 跳转回购物车页面
+		// 增加商品的数量
+		int oldNum = item.getNum();
+		item.setNum(oldNum + 1);
+		
+		// 跳转回页面
 		request.getRequestDispatcher("cart.jsp").forward(request, response);
 	}
 

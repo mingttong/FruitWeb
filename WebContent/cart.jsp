@@ -8,6 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>购物车</title>
+<link rel="stylesheet" href="css/cart.css"/>
 </head>
 <body>
 
@@ -37,9 +38,9 @@ Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
                 <strong><%=item.getPrice() %></strong>
             </div>
             <div class="p-quantity">
-                <a data-sku="<%=goodsID %>" href="javascript:void(0)">-</a>
+                <a class="decrement <%if (item.getNum() == 1) { %> disabled <%} %>" data-sku="<%=goodsID %>" href="javascript:void(0)" <% if (item.getNum() != 1) { %> onclick="decreaseItem(this)" <%} %>>-</a>
                 <input type="text" value="<%=item.getNum() %>"/>
-                <a data-sku="<%=goodsID %>" href="javascript:void(0)">+</a>
+                <a class="increment" data-sku="<%=goodsID %>" href="javascript:void(0)" onclick="increaseItem(this)">+</a>
             </div>
             <div class="p-sum">
                 <strong><%=item.getPrice() * item.getNum() %></strong>

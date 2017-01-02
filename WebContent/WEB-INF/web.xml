@@ -79,4 +79,24 @@
     <servlet-name>ServletDeleteItem</servlet-name>
     <url-pattern>/deleteItem.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletIncreaseItem</display-name>
+    <servlet-name>ServletIncreaseItem</servlet-name>
+    <servlet-class>com.mingttong.fruitweb.ServletIncreaseItem</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletIncreaseItem</servlet-name>
+    <url-pattern>/increaseItem.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletDecreaseItem</display-name>
+    <servlet-name>ServletDecreaseItem</servlet-name>
+    <servlet-class>com.mingttong.fruitweb.ServletDecreaseItem</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDecreaseItem</servlet-name>
+    <url-pattern>/decreaseItem.do</url-pattern>
+  </servlet-mapping>
 </web-app>
