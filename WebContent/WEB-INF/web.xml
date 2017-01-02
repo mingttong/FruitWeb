@@ -49,4 +49,14 @@
     <servlet-name>ServletLogoff</servlet-name>
     <url-pattern>/logoff.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletModifyPwd</display-name>
+    <servlet-name>ServletModifyPwd</servlet-name>
+    <servlet-class>com.mingttong.fruitweb.ServletModifyPwd</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletModifyPwd</servlet-name>
+    <url-pattern>/modifyPwd.do</url-pattern>
+  </servlet-mapping>
 </web-app>

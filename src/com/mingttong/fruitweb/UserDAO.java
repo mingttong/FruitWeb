@@ -3,8 +3,44 @@ package com.mingttong.fruitweb;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class UserDAO extends BaseDAO {
+	
+	/**
+	 * 更改密码
+	 * @param vo
+	 * @return 是否更改成功
+	 */
+	public boolean updatePwd(UserVO vo) {
+		boolean f = false;
+		
+		Connection conn = getConn();
+		String sql = "update usr_info set pwd = ? where usr_name = ?";
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, vo.getPassword());
+			ps.setString(2, vo.getUser_name());
+			
+			int count = ps.executeUpdate();
+			
+			if (count > 0) {
+				
+				// 更改成功
+				f = true;
+				System.out.println(vo.getUser_name() + ":更改成功！");
+			} else {
+				
+				// 更改失败
+				System.out.println(vo.getUser_name() + ":更改失败...");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return f;
+	}
 	
 	/**
 	 * 根据用户名查找用户信息
