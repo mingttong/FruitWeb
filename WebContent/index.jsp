@@ -30,7 +30,7 @@ List<GoodsVO> goodsList = dao.getGoodsList(); // 获取商品列表
 <div id="goodsList">
     <ul class="gl-wrap clearfix">
     <%for (GoodsVO vo : goodsList) { %>
-        <li id="<%=vo.getGoodsID() %>" class="gl-item">
+        <li class="gl-item">
             <div class="gl-i-wrap">
                 <div class="p-img">
                     <a target="_blank" href="#" title="<%=vo.getTitle() %>">
@@ -49,9 +49,7 @@ List<GoodsVO> goodsList = dao.getGoodsList(); // 获取商品列表
                     </a>
                 </div>
                 <div class="p-operate">
-                    <form action="" method="post">
-                        <input type="submit" value="加入购物车"/>
-                    </form>
+                    <a data-sku="<%=vo.getGoodsID() %>" href="javascript:void(0);" onclick="addCart(this)">加入购物车</a>
                 </div>
             </div>
         </li>
@@ -61,5 +59,6 @@ List<GoodsVO> goodsList = dao.getGoodsList(); // 获取商品列表
 
 <footer></footer>
 
+<script src="js/index.js"></script>
 </body>
 </html>
