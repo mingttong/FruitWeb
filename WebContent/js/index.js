@@ -53,8 +53,21 @@ function addCart(anchor) {
     var goods_id = anchor.getAttribute("data-sku"); // 商品ID
     var url = "addCart.do?goodsID=" + goods_id;
 
-    var request = new XMLHttpRequest();
-    request.open("GET", url, true);
-    request.send();
+    ajaxAddCart(url);
 
+}
+
+function ajaxAddCart(url) {
+
+    var httpRequest = new XMLHttpRequest();
+
+    httpRequest.onreadystatechange = (function () {
+        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+            // 加载成功后
+            alert("添加成功！");
+        }
+    });
+
+    httpRequest.open("GET", url, true);
+    httpRequest.send();
 }
