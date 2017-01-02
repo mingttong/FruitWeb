@@ -1,5 +1,10 @@
 package com.mingttong.fruitweb;
 
+/**
+ * 数据库中的商品信息
+ * @author zhouwunan
+ *
+ */
 public class GoodsVO {
 	
 	private int goodsID = 0;

@@ -10,6 +10,51 @@ import java.util.List;
 public class GoodsDAO extends BaseDAO {
 	
 	/**
+	 * 根据商品ID获取商品信息
+	 * @param goodsID
+	 * @return 返回GoodsVO类商品信息
+	 * 
+	 * 是否可以和findByTitle合并？
+	 */
+	public GoodsVO getGoodsByID(int goodsID) {
+		GoodsVO vo = null;
+		
+		int goodsIDInDb = 0;
+		String titleInDb = "";
+		int priceInDb = 0;
+		String imgUrlInDb = "";
+		
+		Connection conn = getConn();
+		String sql = "select goods_id, title, price, img_url from goods where goods_id=?";
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, goodsID);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				
+				goodsIDInDb = rs.getInt("goods_id");
+				titleInDb = rs.getString("title");
+				priceInDb = rs.getInt("price");
+				imgUrlInDb = rs.getString("img_url");
+				vo = new GoodsVO(goodsIDInDb, titleInDb, priceInDb, imgUrlInDb);
+				
+			} else {
+				System.out.println("商品不存在！");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn);
+		}
+		
+		return vo;
+	}
+	
+	/**
 	 * 获取数据库中的所有商品信息
 	 * @return
 	 */
