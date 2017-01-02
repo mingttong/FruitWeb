@@ -23,7 +23,7 @@ public class ServletReg extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String fail_url = "reg.jsp";
 		String success_url = "index.jsp";
-		String loginKey = "LOGIN_RES";
+//		String loginKey = "LOGIN_RES";
 		
 		String usr = request.getParameter("usr");
 		String pwd = request.getParameter("pwd");
@@ -40,7 +40,7 @@ public class ServletReg extends HttpServlet {
 			
 			// 在session中存储登录信息
 			HttpSession session = request.getSession();
-			session.setAttribute(loginKey, usr);
+			session.setAttribute("LOGGED_IN_USER", usr);
 			
 			// 跳转至welcome.jsp并显示提示
 			request.getRequestDispatcher(success_url).forward(request, response);

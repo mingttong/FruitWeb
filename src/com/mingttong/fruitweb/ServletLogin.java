@@ -11,15 +11,15 @@ import javax.servlet.http.HttpSession;
 
 public class ServletLogin extends HttpServlet {
 	
-	private String loginKey = "LOGIN_RES";
-	
-	public String getLoginKey() {
-		return loginKey;
-	}
-
-	public void setLoginKey(String loginKey) {
-		this.loginKey = loginKey;
-	}
+//	private String loginKey = "LOGIN_RES";
+//	
+//	public String getLoginKey() {
+//		return loginKey;
+//	}
+//
+//	public void setLoginKey(String loginKey) {
+//		this.loginKey = loginKey;
+//	}
 
 	private static final long serialVersionUID = 1L;
        
@@ -74,7 +74,7 @@ public class ServletLogin extends HttpServlet {
 			// 账号密码正确
 			
 			// session缓存用户信息
-			session.setAttribute(loginKey, user_name);
+			session.setAttribute("LOGGED_IN_USER", user_name);
 			
 			// 跳转网站首页
 			request.getRequestDispatcher(success_url).forward(request, response);
