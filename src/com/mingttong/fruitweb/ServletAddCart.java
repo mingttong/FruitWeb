@@ -74,7 +74,6 @@ public class ServletAddCart extends HttpServlet {
 			
 		}
 		
-		
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
