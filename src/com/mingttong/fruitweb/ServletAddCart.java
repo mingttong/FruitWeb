@@ -79,13 +79,6 @@ public class ServletAddCart extends HttpServlet {
 			
 		}
 		
-		Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
-		
-		for (int id : cart.keySet()) {
-	    	ItemVO item = cart.get(goodsID);
-	    	System.out.println(id);
-		}
-		
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 

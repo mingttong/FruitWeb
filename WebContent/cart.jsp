@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>购物车</title>
 </head>
 <body>
 
@@ -36,6 +36,9 @@ Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
                 <a href="javascript:void(0)">-</a>
                 <input type="text" value="<%=item.getNum() %>"/>
                 <a href="javascript:void(0)">+</a>
+            </div>
+            <div class="sum">
+                <strong><%=item.getPrice() * item.getNum() %></strong>
             </div>
             <div class="options">
                 <a data-sku="<%=goodsID %>" href="javascript:void(0)">删除</a>
