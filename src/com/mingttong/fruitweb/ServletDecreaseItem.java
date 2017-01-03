@@ -1,6 +1,7 @@
 package com.mingttong.fruitweb;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +48,18 @@ public class ServletDecreaseItem extends HttpServlet {
 		}
 		
 		// 跳转回页面
-		request.getRequestDispatcher("cart.jsp").forward(request, response);
+//		request.getRequestDispatcher("cart.jsp").forward(request, response);
+		
+		// 返回（数目，总价）
+		int resNum = item.getNum();
+		int resSum = resNum * item.getPrice();
+		
+		String resString = resNum + "," + resSum;
+		
+		PrintWriter out = response.getWriter();
+		out.println(resString);
+		out.flush();
+		out.close();
 	}
 
 }

@@ -46,8 +46,14 @@ public class ServletIncreaseItem extends HttpServlet {
 		// 跳转回页面
 //		request.getRequestDispatcher("cart.jsp").forward(request, response);
 		
+		// 返回（数目，总价）
+		int resNum = item.getNum();
+		int resSum = resNum * item.getPrice();
+		
+		String resString = resNum + "," + resSum;
+		
 		PrintWriter out = response.getWriter();
-		out.println("111111");
+		out.println(resString);
 		out.flush();
 		out.close();
 	}

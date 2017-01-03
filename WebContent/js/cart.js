@@ -28,36 +28,34 @@ function submitPost(url, dataToPost) {
     return tmp_form;
 }
 
+/**
+ * 删除商品
+ * @param anchor “删除商品按钮”的元素
+ */
 function deleteItem(anchor) {
 
     var goods_id = anchor.getAttribute("data-sku");
     var url = "deleteItem.do?goodsID=" + goods_id;
 
-    ajaxUpdateItem(url);
+    ajaxUpdateItem(goods_id, url);
 }
 
+/**
+ * 增加商品数量
+ * @param anchor “增加数量按钮”的元素
+ */
 function increaseItem(anchor) {
 
     var goods_id = anchor.getAttribute("data-sku");
     var url = "increaseItem.do?goodsID=" + goods_id;
 
-    var itemObj = getItemObj(goods_id);
-
-    var httpRequest = new XMLHttpRequest();
-
-    httpRequest.onreadystatechange = (function () {
-        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-            // 加载成功后
-            console.log(httpRequest.responseText);
-        }
-    });
-
-    httpRequest.open("GET", url, true);
-    httpRequest.send();
-
-    //ajaxUpdateItem(url);
+    ajaxUpdateItem(goods_id, url);
 }
 
+/**
+ * 减少商品数量
+ * @param anchor “减少数量按钮”的元素
+ */
 function decreaseItem(anchor) {
 
     var goods_id = anchor.getAttribute("data-sku");
@@ -65,22 +63,49 @@ function decreaseItem(anchor) {
 
     var itemObj = getItemObj(goods_id);
 
-    if (itemObj.getNum() > 1) {
+    if (typeof itemObj.getNum() === "number" && itemObj.getNum() > 1) {
 
-        ajaxUpdateItem(url);
+        ajaxUpdateItem(goods_id, url);
 
     } else {
         // 调整样式
     }
 }
 
-function ajaxUpdateItem(url) {
+/**
+ * 异步更新商品信息
+ * @param id
+ * @param url
+ */
+function ajaxUpdateItem(id, url) {
+
+    // 获取商品对象
+    var itemObj = getItemObj(id);
 
     var httpRequest = new XMLHttpRequest();
 
     httpRequest.onreadystatechange = (function () {
         if (httpRequest.readyState === 4 && httpRequest.status === 200) {
             // 加载成功后
+
+            // 获取服务器返回的数据，并截取其中的值
+            var resArr = httpRequest.responseText.split(",");
+            var num = parseInt(resArr[0]), sum = parseInt(resArr[1]);
+
+            // 如果数量和总价都为0的话则表示删除该商品
+            if (num === 0 && sum === 0) {
+
+                // 删除该商品
+                var itemElement = itemObj.getItemElement();
+                itemElement.parentNode.removeChild(itemElement);
+
+            } else {
+
+                // 更改商品信息
+                itemObj.setNum(num);
+                itemObj.setSum(sum);
+
+            }
         }
     });
 
@@ -116,7 +141,9 @@ function getItemObj(id) {
         },
         "setSum" : function (sum) {
             sumElement.textContent = sum;
+        },
+        "getItemElement" : function () {
+            return item;
         }
-
     };
 }

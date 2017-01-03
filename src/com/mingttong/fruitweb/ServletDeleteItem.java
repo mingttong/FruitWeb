@@ -1,6 +1,7 @@
 package com.mingttong.fruitweb;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,7 +41,15 @@ public class ServletDeleteItem extends HttpServlet {
 		cart.remove(goodsID);
 		
 		// 跳转回购物车页面
-		request.getRequestDispatcher("cart.jsp").forward(request, response);
+//		request.getRequestDispatcher("cart.jsp").forward(request, response);
+		
+		// 返回特殊的数目表示删除
+		String resString = "0,0";
+		
+		PrintWriter out = response.getWriter();
+		out.println(resString);
+		out.flush();
+		out.close();
 	}
 
 }
