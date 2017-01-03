@@ -5,11 +5,12 @@
 function editItem(inputBtn) {
 
     var goods_id = inputBtn.getAttribute("data-sku");
-    var num = 0;
+    var num = inputBtn.value; // 获取修改后的value值
 
     var url = "editItem.do?goodsID=" + goods_id + "&num=" + num;
 
     ajaxUpdateItem(goods_id, url);
+
 }
 
 /**
@@ -170,10 +171,12 @@ function getItemObj(id) {
         },
         "setNum" : function (num) {
             numElement.setAttribute("value", num);
+            numElement.value = num;
             this.num = num;
         },
         "setSum" : function (sum) {
             sumElement.textContent = sum;
+            sumElement.value = sum;
             this.sum = sum;
         },
         "getItemElement" : function () {
@@ -192,6 +195,7 @@ window.onload = function () {
         inputElements[i].addEventListener("change", function () {
 
             editItem(this);
+
         });
     }
 

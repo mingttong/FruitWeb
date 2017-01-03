@@ -19,6 +19,7 @@ public class ServletEditItem extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		this.doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,6 +27,7 @@ public class ServletEditItem extends HttpServlet {
 		// 获取商品ID
 		int goodsID = Integer.parseInt(request.getParameter("goodsID"));
 		int newNum = Integer.parseInt(request.getParameter("num"));
+		
 		HttpSession session = request.getSession();
 		
 		// 获取购物车
