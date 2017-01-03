@@ -39,7 +39,7 @@ Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
             </div>
             <div class="p-quantity">
                 <a class="decrement <%if (item.getNum() == 1) { %> disabled <%} %>" data-sku="<%=goodsID %>" href="javascript:void(0)" onclick="decreaseItem(this)">-</a>
-                <input type="text" value="<%=item.getNum() %>"/>
+                <input data-sku="<%=goodsID %>" type="text" value="<%=item.getNum() %>"/>
                 <a class="increment" data-sku="<%=goodsID %>" href="javascript:void(0)" onclick="increaseItem(this)">+</a>
             </div>
             <div class="p-sum">

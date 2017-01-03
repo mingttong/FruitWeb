@@ -2,6 +2,16 @@
  * Created by lenovo on 2017/1/2.
  */
 
+function editItem(inputBtn) {
+
+    var goods_id = inputBtn.getAttribute("data-sku");
+    var num = 0;
+
+    var url = "editItem.do?goodsID=" + goods_id + "&num=" + num;
+
+    ajaxUpdateItem(goods_id, url);
+}
+
 /**
  * 删除商品
  * @param anchor “删除商品按钮”的元素
@@ -174,11 +184,14 @@ function getItemObj(id) {
 
 window.onload = function () {
 
+    // 给输入框添加编辑事件
     var inputElements = document.querySelectorAll(".p-quantity input");
 
     for (var i = 0; i < inputElements.length; i++) {
+
         inputElements[i].addEventListener("change", function () {
-            console.log("success");
+
+            editItem(this);
         });
     }
 

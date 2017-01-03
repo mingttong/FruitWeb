@@ -99,4 +99,14 @@
     <servlet-name>ServletDecreaseItem</servlet-name>
     <url-pattern>/decreaseItem.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletEditItem</display-name>
+    <servlet-name>ServletEditItem</servlet-name>
+    <servlet-class>com.mingttong.fruitweb.ServletEditItem</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletEditItem</servlet-name>
+    <url-pattern>/editItem.do</url-pattern>
+  </servlet-mapping>
 </web-app>
