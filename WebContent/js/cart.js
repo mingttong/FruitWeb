@@ -28,38 +28,50 @@ function submitPost(url, dataToPost) {
     return tmp_form;
 }
 
-function deleteItem(btn) {
+function deleteItem(anchor) {
 
-    var goods_id = btn.getAttribute("data-sku");
+    var goods_id = anchor.getAttribute("data-sku");
     var url = "deleteItem.do?goodsID=" + goods_id;
 
     ajaxUpdateItem(url);
 }
 
-function increaseItem(btn) {
+function increaseItem(anchor) {
 
-    var goods_id = btn.getAttribute("data-sku");
+    var goods_id = anchor.getAttribute("data-sku");
     var url = "increaseItem.do?goodsID=" + goods_id;
 
-    ajaxUpdateItem(url);
+    var itemObj = getItemObj(goods_id);
+
+    var httpRequest = new XMLHttpRequest();
+
+    httpRequest.onreadystatechange = (function () {
+        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+            // 加载成功后
+            console.log(httpRequest.responseText);
+        }
+    });
+
+    httpRequest.open("GET", url, true);
+    httpRequest.send();
+
+    //ajaxUpdateItem(url);
 }
 
-function decreaseItem(btn) {
+function decreaseItem(anchor) {
 
-    var goods_id = btn.getAttribute("data-sku");
+    var goods_id = anchor.getAttribute("data-sku");
     var url = "decreaseItem.do?goodsID=" + goods_id;
 
-    ajaxUpdateItem(url);
-}
+    var itemObj = getItemObj(goods_id);
 
-function addCart(anchor) {
-    var goods_id = anchor.getAttribute("data-sku"); // 商品ID
-    var url = "addCart.do?goodsID=" + goods_id;
+    if (itemObj.getNum() > 1) {
 
-    var request = new XMLHttpRequest();
-    request.open("GET", url, true);
-    request.send();
+        ajaxUpdateItem(url);
 
+    } else {
+        // 调整样式
+    }
 }
 
 function ajaxUpdateItem(url) {
@@ -74,4 +86,37 @@ function ajaxUpdateItem(url) {
 
     httpRequest.open("GET", url, true);
     httpRequest.send();
+}
+
+/**
+ * 获取商品对象
+ * @param id
+ * @returns {{getNum: Function, getSum: Function, setNum: Function, setSum: Function}}
+ */
+function getItemObj(id) {
+
+    var item = document.getElementById(id);
+
+    if (item) {
+        var numElement = item.querySelector(".p-quantity input");
+        var sumElement = item.querySelector(".p-sum strong");
+        var num = parseInt(numElement.getAttribute("value"));
+        var sum = parseInt(sumElement.textContent);
+    }
+
+    return {
+        "getNum" : function () {
+            return num;
+        },
+        "getSum" : function () {
+            return sum;
+        },
+        "setNum" : function (num) {
+            numElement.setAttribute("value", num);
+        },
+        "setSum" : function (sum) {
+            sumElement.textContent = sum;
+        }
+
+    };
 }

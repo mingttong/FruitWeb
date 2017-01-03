@@ -1,6 +1,7 @@
 package com.mingttong.fruitweb;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,7 +44,12 @@ public class ServletIncreaseItem extends HttpServlet {
 		item.setNum(oldNum + 1);
 		
 		// 跳转回页面
-		request.getRequestDispatcher("cart.jsp").forward(request, response);
+//		request.getRequestDispatcher("cart.jsp").forward(request, response);
+		
+		PrintWriter out = response.getWriter();
+		out.println("111111");
+		out.flush();
+		out.close();
 	}
 
 }
