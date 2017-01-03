@@ -69,7 +69,6 @@ function ajaxUpdateItem(url) {
     httpRequest.onreadystatechange = (function () {
         if (httpRequest.readyState === 4 && httpRequest.status === 200) {
             // 加载成功后
-            alert("添加成功！");
         }
     });
 
