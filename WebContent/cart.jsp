@@ -12,8 +12,27 @@
 </head>
 <body>
 
-<h1>购物车</h1>
-<hr/>
+<header>
+    <div class="grid">
+        <ul>
+            <li class="usr-name">
+                <strong>mingttong</strong>
+            </li>
+            <li class="log-off">
+                <a href="logoff.do">退出</a>
+            </li>
+            <li class="log-in">
+                <a class="link-login" href="login.jsp">请登录</a>
+            </li>
+            <li class="cart-icon">
+                <i class="cart-img"></i>
+            </li>
+            <li class="cart-link">
+                <a target="_blank" href="cart.jsp">我的购物车</a>
+            </li>
+        </ul>
+    </div>
+</header>
 
 <%
 if (session.getAttribute("GOODS_IN_CART") != null) {
@@ -22,7 +41,7 @@ Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
 
 <div class="cart">
     <div class="grid">
-        <div class="item-list">
+        <div class="item-list clearfix">
     	<%for (int goodsID : cart.keySet()) {
     		ItemVO item = cart.get(goodsID);
     	%>
