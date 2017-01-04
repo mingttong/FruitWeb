@@ -1,0 +1,211 @@
+/*****************
+* 页面样式
+******************/
+
+/*================
+  基本样式
+  ================*/
+
+html {
+    font-size: 62.5%; /*这时候一个rem=100px*/
+    color: #222;
+}
+
+::selection {
+    background-color: #b3d4fc;
+    text-shadow: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+em, i, u {
+    font-style: normal;
+}
+
+/*================
+  工具样式
+  ================*/
+
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.text-hide {
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*=============
+  自定义页面样式
+  =============*/
+
+body {
+    line-height: 1.5;
+    background-color: #fff;
+    /*font: 1.2rem Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+    font: 1.2rem Arial, Verdana;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: #c81623;
+    text-decoration: none;
+}
+
+/*网站整体*/
+
+.grid {
+    width: 900px;
+    margin: auto;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*网站头部*/
+
+header {
+    width: 100%;
+    background: #f1f1f1;
+    position: fixed;
+    box-shadow: inset 0 1px 1px rgba(50, 50, 50, 0.5);
+}
+
+header ul {
+    text-align: right;
+}
+
+header ul li {
+    display: inline-block;
+    margin: 5px;
+}
+
+header ul li.log-in a.link-login {
+    color: #f10215;
+}
+
+header ul li.log-in a.link-login:hover {
+    color: #c81623;
+}
+
+header .cart-icon .cart-img {
+    display: block;
+    overflow: hidden;
+    width: 18px;
+    height: 16px;
+    background: url(../img/cart_img.png) 0 -58px no-repeat
+}
+
+/*商品栏样式*/
+
+.goods-list {
+    width: 100%;
+    padding-top: 30px;
+}
+
+.goods-list ul li {
+    display: inline-block;
+    width: 220px;
+}
+
+.goods-list .gl-item {
+    padding-top: 38px;
+}
+
+.goods-list .gl-item .p-price {
+    margin-bottom: 8px;
+}
+
+.goods-list .gl-item .p-name {
+    margin-bottom: 8px;
+    overflow: hidden;
+    height: 28px;
+}
+
+.goods-list .gl-item .p-price strong {
+    color: #e4393c;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.goods-list .gl-item .p-price strong em {
+    font-size: 1.6rem;
+}
+
+.goods-list .gl-item .p-operate .addcart {
+    color: #e4393c;
+    border: 1px solid #DDD;
+    padding: 5px 5px 5px 5px;
+    display: inline-block;
+}
+
+/*底部样式*/
+footer {
+    width: 100%;
+    background: #eaeaea;
+    box-shadow: inset 0 2px 2px rgba(50, 50, 50, 0.8);
+    color: #444;
+    padding: 1px 0;
+    margin-top: 10px;
+}
