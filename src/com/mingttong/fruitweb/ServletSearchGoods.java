@@ -20,13 +20,16 @@ public class ServletSearchGoods extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String successUrl = "result.jsp";
+		
+		request.setCharacterEncoding("UTF-8"); // 对jsp传过来的值重新进行编码
 		
 		// 每页显示的记录数目
 		int numPerPage = 10;
 		
 		// 获取参数
 		String keyword = request.getParameter("keyword");
-		String sPage = request.getParameter("page"); // 当前页面？
+		String sPage = request.getParameter("page");
 		
 		int iPage = 1;
 		
@@ -61,7 +64,13 @@ public class ServletSearchGoods extends HttpServlet {
 		List<GoodsVO> result = dao.searchByKeyword(keyword, iPage);
 		
 		// 页面跳转以及传值（确保执行页面跳转后doPost执行完毕）
-		request
+		request.setAttribute("curPgNum", iPage);
+		request.setAttribute("totalPgNum", totalPgNum);
+		request.setAttribute("QUERY_RES", result);
+		request.setAttribute("keyword", keyword);
+		
+		// 跳转页面
+		request.getRequestDispatcher(successUrl).forward(request, response);;
 	}
 
 }

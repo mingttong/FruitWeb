@@ -9,6 +9,36 @@ import java.util.List;
 
 public class GoodsDAO extends BaseDAO {
 	
+	public List<GoodsVO> searchByKeyword(String keyword, int iPage) {
+		List<GoodsVO> result = new ArrayList<GoodsVO>();
+		int numPerPage = 10; // 每页10条记录
+		
+		Connection conn = getConn();
+		int startIndex = numPerPage * (iPage - 1) ;
+		String sql = "select title, price, img_url from goods where title like ? limit ?, ?";
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + keyword + "%");
+			ps.setInt(2, startIndex);
+			ps.setInt(3, numPerPage);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				String title = rs.getString("title");
+				int price = rs.getInt("price");
+				String imgUrl = rs.getString("img_url");
+				GoodsVO vo = new GoodsVO(title, price, imgUrl);
+				result.add(vo);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 	/**
 	 * 获取搜索结果数目
 	 * @param keyword
@@ -17,7 +47,7 @@ public class GoodsDAO extends BaseDAO {
 	public int countByKeyword(String keyword) {
 		int count = 0;
 		
-		String sql = "select count(*) as totalCount from studentInfo where title like ?";
+		String sql = "select count(*) as totalCount from goods where title like ?";
 		Connection conn = getConn();
 		
 		try {
