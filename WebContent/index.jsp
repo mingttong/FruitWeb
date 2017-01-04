@@ -18,6 +18,8 @@
 
 <a href="cart.jsp" target="_blank">我的购物车</a>
 
+<div class="container">
+
 <header>
     <form action="logoff.do" method="post">
         <input type="submit" value="退出"/>
@@ -29,7 +31,7 @@ GoodsDAO dao = new GoodsDAO();
 List<GoodsVO> goodsList = dao.getGoodsList(); // 获取商品列表
 %>
 
-<div id="goodsList">
+<div class="goods-list">
     <ul class="gl-wrap clearfix">
     <%for (GoodsVO vo : goodsList) { %>
         <li class="gl-item">
@@ -51,7 +53,7 @@ List<GoodsVO> goodsList = dao.getGoodsList(); // 获取商品列表
                     </a>
                 </div>
                 <div class="p-operate">
-                    <a data-sku="<%=vo.getGoodsID() %>" href="javascript:void(0)" onclick="addCart(this)">加入购物车</a>
+                    <a class="addcart" data-sku="<%=vo.getGoodsID() %>" href="javascript:void(0)" onclick="addCart(this)">加入购物车</a>
                 </div>
             </div>
         </li>
@@ -60,6 +62,8 @@ List<GoodsVO> goodsList = dao.getGoodsList(); // 获取商品列表
 </div>
 
 <footer></footer>
+
+</div>
 
 <script src="js/index.js"></script>
 </body>
