@@ -109,4 +109,14 @@
     <servlet-name>ServletEditItem</servlet-name>
     <url-pattern>/editItem.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletSearchGoods</display-name>
+    <servlet-name>ServletSearchGoods</servlet-name>
+    <servlet-class>com.mingttong.fruitweb.ServletSearchGoods</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletSearchGoods</servlet-name>
+    <url-pattern>/searchGoods.do</url-pattern>
+  </servlet-mapping>
 </web-app>

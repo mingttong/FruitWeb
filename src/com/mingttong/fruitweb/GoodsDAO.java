@@ -10,6 +10,33 @@ import java.util.List;
 public class GoodsDAO extends BaseDAO {
 	
 	/**
+	 * 获取搜索结果数目
+	 * @param keyword
+	 * @return 返回搜索结果数目
+	 */
+	public int countByKeyword(String keyword) {
+		int count = 0;
+		
+		String sql = "select count(*) as totalCount from studentInfo where title like ?";
+		Connection conn = getConn();
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + keyword + "%");
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				count = rs.getInt("totalCount");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return count;
+	}
+	
+	/**
 	 * 根据商品ID获取商品信息
 	 * @param goodsID
 	 * @return 返回GoodsVO类商品信息
