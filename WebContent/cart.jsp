@@ -21,35 +21,37 @@ Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
 %>
 
 <div class="cart">
-    <div class="item-list">
-    <%for (int goodsID : cart.keySet()) {
-    	ItemVO item = cart.get(goodsID);
-    %>
-        <div id="<%=goodsID %>" class="item-item">
-            <div class="p-goods">
-                <div class="img">
-                    <img src="<%=item.getImgUrl() %>" alt="<%=item.getImgUrl() %>"/>
-                </div>
-                <div class="title">
-                    <em><%=item.getTitle() %></em>
-                </div>
-            </div>
-            <div class="p-price">
-                <strong><%=item.getPrice() %></strong>
-            </div>
-            <div class="p-quantity">
-                <a class="decrement <%if (item.getNum() == 1) { %> disabled <%} %>" data-sku="<%=goodsID %>" href="javascript:void(0)" onclick="decreaseItem(this)">-</a>
-                <input data-sku="<%=goodsID %>" type="text" value="<%=item.getNum() %>"/>
-                <a class="increment" data-sku="<%=goodsID %>" href="javascript:void(0)" onclick="increaseItem(this)">+</a>
-            </div>
-            <div class="p-sum">
-                <strong><%=item.getPrice() * item.getNum() %></strong>
-            </div>
-            <div class="p-ops">
-                <a data-sku="<%=goodsID %>" href="javascript:void(0)" onclick="deleteItem(this)">删除</a>
-            </div>
-        </div>
-    <%} %>
+    <div class="grid">
+        <div class="item-list">
+    	<%for (int goodsID : cart.keySet()) {
+    		ItemVO item = cart.get(goodsID);
+    	%>
+	        <div id="<%=goodsID %>" class="item-item clearfix">
+	            <div class="cell p-goods">
+	                <div class="p-img">
+	                    <img src="<%=item.getImgUrl() %>" alt="<%=item.getImgUrl() %>"/>
+	                </div>
+	                <div class="p-title">
+	                    <em><%=item.getTitle() %></em>
+	                </div>
+	            </div>
+	            <div class="cell p-price">
+	                <strong><%=item.getPrice() %></strong>
+	            </div>
+	            <div class="cell p-quantity">
+	                <a class="decrement <%if (item.getNum() == 1) { %> disabled <%} %>" data-sku="<%=goodsID %>" href="javascript:void(0)" onclick="decreaseItem(this)">-</a>
+	                <input data-sku="<%=goodsID %>" type="text" value="<%=item.getNum() %>"/>
+	                <a class="increment" data-sku="<%=goodsID %>" href="javascript:void(0)" onclick="increaseItem(this)">+</a>
+	            </div>
+	            <div class="cell p-sum">
+	                <strong><%=item.getPrice() * item.getNum() %></strong>
+	            </div>
+	            <div class="cell p-ops">
+	                <a data-sku="<%=goodsID %>" href="javascript:void(0)" onclick="deleteItem(this)">删除</a>
+	            </div>
+	        </div>
+    	<%} %>
+    </div>
     </div>
 </div>
 <%} %>

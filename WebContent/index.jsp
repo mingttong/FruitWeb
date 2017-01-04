@@ -36,7 +36,7 @@ Object loginMsg = se.getAttribute("LOGGED_IN_USER");
             <li class="cart-icon">
                 <i class="cart-img"></i>
             </li>
-            <li class="cart">
+            <li class="cart-link">
                 <a target="_blank" href="cart.jsp">我的购物车</a>
             </li>
         </ul>
