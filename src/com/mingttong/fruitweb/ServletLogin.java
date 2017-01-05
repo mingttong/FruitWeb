@@ -62,6 +62,7 @@ public class ServletLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String success_url = "index.jsp"; // 成功则跳转网站首页
 		String fail_url = "login.jsp"; // 失败跳转回登录页面
+		String loginErr = "";
 		
 		// 接收登录信息
 		String user_name = request.getParameter("usr");
@@ -80,10 +81,15 @@ public class ServletLogin extends HttpServlet {
 			request.getRequestDispatcher(success_url).forward(request, response);
 			
 		} else {
+			
+			loginErr = "登录失败！";
+			session.setAttribute("LOGIN_ERR", loginErr);
 			// 账号密码错误，跳转回登录页面
 			request.getRequestDispatcher(fail_url).forward(request, response);
 
 			System.out.println("登录失败！");
+			
+			
 		}
 	}
 

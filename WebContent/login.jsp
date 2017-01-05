@@ -10,6 +10,15 @@
 <h1>登录</h1>
 <hr />
 
+<%
+HttpSession se = request.getSession();
+String errMsg = (String)se.getAttribute("LOGIN_ERR");
+if (errMsg == null) {
+	se.setAttribute("LOGIN_ERR", "");
+	errMsg = "";
+}
+%>
+
 <form action="login.do" method="post">
     用户名：<input type="text" name="usr" />
     <br />
@@ -18,6 +27,7 @@
     <input type="submit" value="登录" />
     <a href="reg.jsp"><input type="button" value="注册"/></a>
 </form>
+<em><%=errMsg %></em>
 
 </body>
 </html>
