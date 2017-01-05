@@ -110,8 +110,6 @@ a:hover, a:active {
     text-decoration: none;
 }
 
-/*网站整体*/
-
 .grid {
     width: 900px;
     margin: auto;
@@ -195,7 +193,7 @@ header .cart-icon .cart-img {
 
 .goods-list .gl-item .p-operate .addcart {
     color: #e4393c;
-    border: 1px solid #DDD;
+    border: 1px solid #ddd;
     padding: 5px 5px 5px 5px;
     display: inline-block;
 }

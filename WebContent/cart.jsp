@@ -9,21 +9,30 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>购物车</title>
 <link rel="stylesheet" href="css/cart.css"/>
+<link rel="stylesheet" href="css/normalize.css"/>
 </head>
 <body>
+
+<%
+HttpSession se = request.getSession();
+Object loginMsg = se.getAttribute("LOGGED_IN_USER");
+%>
 
 <header>
     <div class="grid">
         <ul>
+        <% if (loginMsg != null) { %>
             <li class="usr-name">
-                <strong>mingttong</strong>
+                <strong><%=loginMsg %></strong>
             </li>
             <li class="log-off">
                 <a href="logoff.do">退出</a>
             </li>
+        <% } else { %>
             <li class="log-in">
                 <a class="link-login" href="login.jsp">请登录</a>
             </li>
+        <% } %>
             <li class="cart-icon">
                 <i class="cart-img"></i>
             </li>
@@ -55,15 +64,15 @@ Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
 	                </div>
 	            </div>
 	            <div class="cell p-price">
-	                <strong><%=item.getPrice() %></strong>
+	                <strong>¥<%=item.getPrice() %></strong>
 	            </div>
 	            <div class="cell p-quantity">
 	                <a class="decrement <%if (item.getNum() == 1) { %> disabled <%} %>" data-sku="<%=goodsID %>" href="javascript:void(0)" onclick="decreaseItem(this)">-</a>
-	                <input data-sku="<%=goodsID %>" type="text" value="<%=item.getNum() %>"/>
+	                <input class="itxt" data-sku="<%=goodsID %>" type="text" value="<%=item.getNum() %>"/>
 	                <a class="increment" data-sku="<%=goodsID %>" href="javascript:void(0)" onclick="increaseItem(this)">+</a>
 	            </div>
 	            <div class="cell p-sum">
-	                <strong><%=item.getPrice() * item.getNum() %></strong>
+	                <strong>¥<%=item.getPrice() * item.getNum() %></strong>
 	            </div>
 	            <div class="cell p-ops">
 	                <a data-sku="<%=goodsID %>" href="javascript:void(0)" onclick="deleteItem(this)">删除</a>
@@ -73,7 +82,22 @@ Map<Integer, ItemVO> cart = (HashMap)session.getAttribute("GOODS_IN_CART");
     </div>
     </div>
 </div>
+<%} else {%>
+<div class="cart">
+    <div class="grid">
+        <div class="item-list clearfix">
+    	</div>
+    </div>
+</div>        
 <%} %>
+
+<footer>
+    <div class="grid">
+        <p>This page is powered by zhouwunan.</p>
+
+        <p>Contact: zhouwunan@qq.com</p>
+    </div>
+</footer>
 
 <script src="js/cart.js"></script>
 </body>

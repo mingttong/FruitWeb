@@ -1,4 +1,274 @@
+/*****************
+* 页面样式
+******************/
+
+/*================
+  基本样式
+  ================*/
+
+html {
+    font-size: 62.5%; /*这时候一个rem=100px*/
+    color: #222;
+}
+
+::selection {
+    background-color: #b3d4fc;
+    text-shadow: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+em, i, u {
+    font-style: normal;
+}
+
+/*================
+  工具样式
+  ================*/
+
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.text-hide {
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*=============
+  自定义页面样式
+  =============*/
+
+body {
+    line-height: 1.5;
+    background-color: #fff;
+    /*font: 1.2rem Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+    font: 1.2rem Arial, Verdana;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: #c81623;
+    text-decoration: none;
+}
+
+.grid {
+    width: 900px;
+    margin: auto;
+}
+
+/*头部样式*/
+
+header {
+    width: 100%;
+    background: #f1f1f1;
+    position: fixed;
+    box-shadow: inset 0 1px 1px rgba(50, 50, 50, 0.5);
+}
+
+header ul {
+    text-align: right;
+}
+
+header ul li {
+    display: inline-block;
+    margin: 5px;
+}
+
+header ul li.log-in a.link-login {
+    color: #f10215;
+}
+
+header ul li.log-in a.link-login:hover {
+    color: #c81623;
+}
+
+header .cart-icon .cart-img {
+    display: block;
+    overflow: hidden;
+    width: 18px;
+    height: 16px;
+    background: url(../img/cart_img.png) 0 -58px no-repeat
+}
+
+/*购物车列表样式*/
+
+.cart {
+    width: 100%;
+    padding-top: 60px;
+}
+
+.cart .item-item {
+    line-height: 20px;
+    border-top: 1px solid #c5c5c5;
+    padding: 0 0 10px 30px;
+}
+
+.cart .item-item:first-child {
+    border-top: 2px solid #c5c5c5;
+}
+
+.cart .item-item strong {
+    font-size: larger;
+}
+
+.cart .item-item .cell {
+    float: left;
+    padding: 15px 0 10px;
+}
+
+.cart .item-item .p-goods {
+    width: 300px;
+    margin-right: 100px;
+}
+
+.cart .item-item .p-price {
+    width: 120px;
+    padding-right: 40px;
+    text-align: right;
+}
+
+.cart .item-item .p-price strong {
+    font-weight: 400;
+}
+
+.cart .item-item .p-goods .p-img {
+    width: 80px;
+    height: 80px;
+    float: left;
+    margin-right: 10px;
+    border: 1px solid #eee;
+    box-sizing: content-box;
+}
+
+.cart .item-item .p-goods img {
+    width: 80px;
+    height: 80px;
+}
+
+.cart .item-item .p-goods .p-title {
+    overflow: hidden;
+    height: 40px;
+}
+
+.cart .item-item .p-quantity {
+    width: 80px;
+}
+
+/*商品数量框*/
+.cart .item-item .p-quantity .itxt {
+    display: block;
+    float: left;
+    width: 42px;
+    height: 18px;
+    line-height: 18px;
+    border: 1px solid #cacbcb;
+    font-size: 12px;
+    text-align: center;
+}
+
+.cart .item-item .p-quantity .increment,.cart .item-item .p-quantity .decrement {
+    display: block;
+    float: left;
+    height: 18px;
+    line-height: 18px;
+    padding: 1px 0;
+    width: 16px;
+    text-align: center;
+    margin: 0;
+}
+
+/*增加按钮*/
+.cart .item-item .p-quantity .increment {
+    border: 1px solid #cacbcb;
+    border-left: 0;
+}
+
+/*减少按钮*/
+.cart .item-item .p-quantity .decrement {
+    border: 1px solid #cacbcb;
+    border-right: 0;
+}
+
+.cart .item-item .p-sum {
+    width: 100px;
+    text-align: right;
+    padding-right: 40px;
+}
+
+.cart .item-item .p-ops {
+    width: 75px;
+}
+
 .disabled {
     cursor: default;
     color: #e9e9e9;
+}
+
+/*底部样式*/
+footer {
+    width: 100%;
+    /*background: #eaeaea;*/
+    box-shadow: inset 0 2px 2px rgba(150, 150, 150, 0.8);
+    color: #444;
+    padding: 1px 0;
+    margin-top: 10px;
 }
