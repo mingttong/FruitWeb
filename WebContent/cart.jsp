@@ -33,6 +33,9 @@ Object loginMsg = se.getAttribute("LOGGED_IN_USER");
                 <a class="link-login" href="login.jsp">请登录</a>
             </li>
         <% } %>
+        	<li class="index-link">
+                <a href="index.jsp">首页</a>
+            </li>
             <li class="cart-icon">
                 <i class="cart-img"></i>
             </li>

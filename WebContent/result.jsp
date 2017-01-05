@@ -26,6 +26,8 @@ keyword = (String)request.getAttribute("keyword");
 %>
 
 <h1>搜索结果</h1>
+<a href="index.jsp">首页</a>
+<a href="cart.jsp">我的购物车</a>
 <hr/>
 
 <table>
@@ -45,6 +47,9 @@ keyword = (String)request.getAttribute("keyword");
         <td>
             <strong><%=vo.getPrice() %></strong>
         </td>
+        <td>
+            <a class="addcart" data-sku="<%=vo.getGoodsID() %>" href="javascript:void(0)" onclick="addCart(this)">加入购物车</a>
+        </td>
     </tr>
     <% } %>
 </table>
@@ -59,5 +64,6 @@ keyword = (String)request.getAttribute("keyword");
 <a href="searchGoods.do?keyword=&page=">末页</a>
 <%} %>
 
+<script src="js/index.js"></script>
 </body>
 </html>

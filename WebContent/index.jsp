@@ -43,6 +43,17 @@ Object loginMsg = se.getAttribute("LOGGED_IN_USER");
     </div>
 </header>
 
+<div class="search-item">
+    <div class="grid">
+        <form action="searchGoods.do" method="post">
+            <input class="search-value" type="text" name="keyword"/>
+            <input type="submit" value="京东一下"/>
+            <br/>
+            <input type="hidden" name="page" value="1"/>
+        </form>
+    </div>
+</div>
+
 <%
 GoodsDAO dao = new GoodsDAO();
 List<GoodsVO> goodsList = dao.getGoodsList(); // 获取商品列表

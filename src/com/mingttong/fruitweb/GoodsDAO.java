@@ -15,7 +15,7 @@ public class GoodsDAO extends BaseDAO {
 		
 		Connection conn = getConn();
 		int startIndex = numPerPage * (iPage - 1) ;
-		String sql = "select title, price, img_url from goods where title like ? limit ?, ?";
+		String sql = "select goods_id, title, price, img_url from goods where title like ? limit ?, ?";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -25,10 +25,11 @@ public class GoodsDAO extends BaseDAO {
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
+				int goodsID = rs.getInt("goods_id");
 				String title = rs.getString("title");
 				int price = rs.getInt("price");
 				String imgUrl = rs.getString("img_url");
-				GoodsVO vo = new GoodsVO(title, price, imgUrl);
+				GoodsVO vo = new GoodsVO(goodsID, title, price, imgUrl);
 				result.add(vo);
 			}
 			
