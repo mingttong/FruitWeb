@@ -8,12 +8,19 @@
 </head>
 <body>
 
+<%
+HttpSession se = request.getSession();
+String errMsg = (String)se.getAttribute("ERR_MSG");
+if (errMsg == null) {
+	se.setAttribute("ERR_MSG", "");
+	errMsg = "";
+}
+%>
+
 <h1>修改密码</h1>
 <hr/>
 
 <form action="modifyPwd.do" method="post">
-    用户名：<input type="text" name="usr"/>
-    <br/>
     原密码：<input type="password" name="oldPwd"/>
     <br/>
     新密码：<input type="password" name="newPwd"/>
@@ -22,6 +29,7 @@
     <br/>
     <input type="submit" value="确认"/>
 </form>
+<em><%=errMsg %></em>
 
 </body>
 </html>

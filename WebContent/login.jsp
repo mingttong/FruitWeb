@@ -16,6 +16,7 @@
     密码：<input type="password" name="pwd" />
     <br />
     <input type="submit" value="登录" />
+    <a href="reg.jsp"><input type="button" value="注册"/></a>
 </form>
 
 </body>

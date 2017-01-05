@@ -25,6 +25,9 @@ Object loginMsg = se.getAttribute("LOGGED_IN_USER");
             <li class="usr-name">
                 <strong><%=loginMsg %></strong>
             </li>
+            <li class="modify-pwd">
+                <a href="modifyPwd.jsp">修改密码</a>
+            </li>
             <li class="log-off">
                 <a href="logoff.do">退出</a>
             </li>

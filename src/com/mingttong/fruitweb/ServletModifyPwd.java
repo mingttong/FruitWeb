@@ -1,10 +1,12 @@
 package com.mingttong.fruitweb;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class ServletModifyPwd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,59 +24,56 @@ public class ServletModifyPwd extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String errMsg = "";
-		String successUrl = "modifyPwd.jsp";
+		String successUrl = "login.jsp";
 		String failUrl = "modifyPwd.jsp";
+		HttpSession session = request.getSession();
 		
 		// 获取修改密码信息
-		String usr = request.getParameter("usr");
+		String usr = (String)session.getAttribute("LOGGED_IN_USER");
 		String oldPwd = request.getParameter("oldPwd");
 		String newPwd = request.getParameter("newPwd");
+		String newPwd2 = request.getParameter("newPwd2");
+		
+		if (newPwd != newPwd2) {
+			errMsg = "两次输入新密码不一致！";
+			session.setAttribute("ERR_MSG", errMsg);
+			request.getRequestDispatcher(failUrl).forward(request, response);
+		}
 		
 		// 向数据库获取用户信息
 		UserDAO dao = new UserDAO();
 		UserVO vo = dao.findByUsr(usr);
-		
-		// 判断该用户是否存在
-		// 通过session获取用户名则可以省去此步骤
-		if (vo == null) {
-			// 用户不存在
+
+		// 判断原密码是否正确
+		if (oldPwd.equals(vo.getPassword())) {
 			
-			errMsg = "密码有误！";
-			System.out.println("用户名不存在！");
-			request.getRequestDispatcher(failUrl).forward(request, response);
+			// 正确
+			// 更改密码
+			vo.setPassword(newPwd);
+			dao.updatePwd(vo);
 			
-		} else {
-			// 用户存在
-			
-			// 判断原密码是否正确
-			if (oldPwd.equals(vo.getPassword())) {
+			if (dao.updatePwd(vo)) {
 				
-				// 正确
-				// 更改密码
-				vo.setPassword(newPwd);
-				dao.updatePwd(vo);
-				
-				if (dao.updatePwd(vo)) {
-					
-					// 修改密码成功，跳转页面
-					errMsg="修改密码成功！";
-					request.getRequestDispatcher(successUrl).forward(request, response);
-					
-				} else {
-					
-					// 修改密码失败，跳转页面
-					errMsg = "修改密码失败...";
-					request.getRequestDispatcher(failUrl).forward(request, response);			
-				}
+				// 修改密码成功，跳转页面
+				session.setAttribute("ERR_MSG", errMsg);
+				request.getRequestDispatcher(successUrl).forward(request, response);
 				
 			} else {
 				
-				// 错误
-				// 显示错误信息，跳转页面
-				errMsg = "密码有误！";
-				System.out.println("原密码错误！");
+				// 修改密码失败，跳转页面
+				errMsg = "修改密码失败...";
+				session.setAttribute("ERR_MSG", errMsg);
 				request.getRequestDispatcher(failUrl).forward(request, response);			
 			}
+			
+		} else {
+			
+			// 错误
+			// 显示错误信息，跳转页面
+			errMsg = "密码有误！";
+			System.out.println("原密码错误！");
+			session.setAttribute("ERR_MSG", errMsg);
+			request.getRequestDispatcher(failUrl).forward(request, response);			
 		}
 		
 	}
