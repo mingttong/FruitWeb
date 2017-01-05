@@ -175,8 +175,8 @@ function getItemObj(id) {
             this.num = num;
         },
         "setSum" : function (sum) {
-            sumElement.textContent = sum;
-            sumElement.value = sum;
+            sumElement.textContent = "¥" + sum;
+            //sumElement.value = sum;
             this.sum = sum;
         },
         "getItemElement" : function () {
