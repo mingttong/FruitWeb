@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class ServletSearchGoods extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -21,6 +22,9 @@ public class ServletSearchGoods extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String successUrl = "result.jsp";
+		String searchErr = "";
+		HttpSession session = request.getSession();
+		session.setAttribute("SEARCH_ERR", searchErr); // 重置错误信息
 		
 		request.setCharacterEncoding("UTF-8"); // 对jsp传过来的值重新进行编码
 		
@@ -47,6 +51,12 @@ public class ServletSearchGoods extends HttpServlet {
 		
 		// 计算总页面数，校验当前页码
 		int totalPgNum = totalResNum / numPerPage;
+		
+		// 如果未找到该商品
+		if (totalResNum == 0) {
+			searchErr = "对不起，没有找到相关商品！";
+			session.setAttribute("SEARCH_ERR", searchErr);
+		}
 		
 		if (totalResNum % numPerPage > 0) {
 			totalPgNum++; // 不足一页的部分另起一页

@@ -7,6 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>搜索结果-京东一下</title>
+<style>
+.s-err {
+    color: red;
+    font-size: larger;
+}
+</style>
 </head>
 <body>
 
@@ -22,6 +28,13 @@ Integer o2 = (Integer)request.getAttribute("totalPgNum");
 totalPgNum = o2.intValue(); // 页码总数
 
 keyword = (String)request.getAttribute("keyword");
+
+HttpSession se = request.getSession();
+String searchErr = (String)se.getAttribute("SEARCH_ERR");
+if (searchErr == null) {
+	se.setAttribute("SEARCH_ERR", "");
+	searchErr = "";
+}
 
 %>
 
@@ -53,6 +66,9 @@ keyword = (String)request.getAttribute("keyword");
     </tr>
     <% } %>
 </table>
+
+<em class="s-err"><%=searchErr %></em>
+<br />
 
 当前第<%=curPgNum %>页，共<%=totalPgNum %>页
 <%if (curPgNum != 1) { %>
